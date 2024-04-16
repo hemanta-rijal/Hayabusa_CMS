@@ -1,0 +1,31 @@
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    // Move the slide track leftward (-250px) by half (n images/2) 0f its width
+    100% {
+        transform: translateX(calc(-250px * 4));
+    }
+}
+
+.slider {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-bottom: 30px;
+    .slide-track {
+        animation: scroll 30s linear infinite;
+        display: flex;
+        width: calc(250px * 8);
+        gap: 40px;
+    }
+
+    .slide {
+        height: inherit;
+        width: inherit;
+        display: flex;
+        align-items: center;
+    }
+}

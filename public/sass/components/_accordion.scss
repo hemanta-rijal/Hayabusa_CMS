@@ -1,0 +1,104 @@
+.accordion__container {
+    .accordion {
+        border-radius: 5px;
+        background-color: $color-white;
+        padding: 20px 25px;
+        color: $color-black;
+        border: none;
+        text-align: left;
+        outline: none;
+        transition: 0.4s;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &-border {
+            border: 2px solid #d4d4d4;
+        }
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+
+        .index {
+            background-color: $color-primary--main;
+            color: $color-white;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            padding: 5px;
+            transition: all 0.4s;
+            flex: 0 0 40px;
+        }
+        .title {
+            flex: 1 1 auto;
+            font-size: 18px;
+            font-weight: 600;
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 16px;
+            }
+        }
+
+        &:after {
+            content: "\002B";
+            color: $color-black;
+            font-size: 30px;
+            float: right;
+            font-weight: 200;
+            margin-left: 5px;
+            transition: transform 0.4s;
+            color: $color-grey;
+        }
+
+        &.active:after {
+            content: "\2715" !important;
+            font-size: 18px;
+            transform: rotate(-90deg);
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 16px;
+            }
+        }
+
+        &.active .index {
+            background-color: $color-secondary--main;
+        }
+    }
+    .panel {
+        font-size: 18px;
+        font-weight: 400;
+        text-align: left;
+        color: $color-grey;
+        padding-left: 85px;
+        padding-right: 85px;
+        p {
+            margin: 21px auto;
+        }
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 16px;
+        }
+    }
+
+    .accordion-border.active {
+        border-bottom: none !important;
+        padding-bottom: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .accordion-border.active + .panel {
+        border: 2px solid #d4d4d4;
+        border-top: none;
+    }
+
+    .accordion-border:not(.active) {
+        border: 2px solid #d4d4d4;
+    }
+
+    .accordion-border:not(.active) + .panel {
+        border: 2px solid #d4d4d4;
+        border-top: none;
+        border-bottom: none;
+    }
+}

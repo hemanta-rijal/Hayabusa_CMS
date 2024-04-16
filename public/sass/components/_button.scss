@@ -1,0 +1,55 @@
+.button {
+    display: block;
+    padding: 10px 32px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: $color-secondary--main;
+    color: $color-white;
+    transition: all 0.2s ease-in-out;
+    min-width: 100px;
+    text-transform: capitalize;
+    @media only screen and (max-width: $breakpoints-md) {
+        font-size: 14px;
+    }
+    &:hover {
+        background-color: $color-primary--main;
+        transform: translateY(-1px);
+        box-shadow: $box-shadow--1;
+    }
+    &:active {
+        background-color: $color-secondary--main;
+    }
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.9;
+    }
+}
+
+.button--secondary {
+    background-color: $color-primary--main;
+    &:active {
+        background-color: $color-primary--main;
+    }
+}
+
+.pills {
+    display: inline-flex;
+    padding: 10px 32px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 41px;
+    background: $color-white;
+    &-text {
+        color: $color-primary--main;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 16px;
+        }
+    }
+}

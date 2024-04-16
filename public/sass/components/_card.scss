@@ -1,0 +1,497 @@
+.horizontal-event-card {
+    border-radius: 5px;
+    background-color: $color-white;
+    display: flex;
+    color: $color-text--dark;
+    padding: 14px 24px;
+    margin-bottom: 25px;
+    gap: 20px;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+
+    .date {
+        flex: 0 0 70px;
+        text-align: left;
+
+        .day {
+            font-size: 40px;
+            font-weight: 600;
+            display: block;
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 35px;
+            }
+        }
+
+        .month {
+            font-size: 20px;
+            font-weight: 400;
+            display: block;
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .details {
+        font-size: 20px;
+        font-weight: 600;
+        flex: 1 1 auto;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+    }
+
+    .icon {
+        flex: 0 0 60px;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        border-radius: 50%;
+        background: #e50075;
+        position: relative;
+        cursor: pointer;
+
+        img {
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &:hover {
+        box-shadow: $box-shadow--1;
+        transform: translateY(-2px);
+    }
+}
+
+.blog_card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.4s ease-in-out;
+    padding: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+
+    &--image {
+        width: 100%;
+        border-radius: 5px;
+        height: 200px;
+        vertical-align: middle;
+        object-fit: cover;
+    }
+
+    &--title,
+    &--link {
+        color: $color-black;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 8px auto;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+    }
+
+    &--desc {
+        color: $color-grey;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 8px auto;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+    }
+
+    &--link {
+        transition: all 0.4s ease-in-out;
+    }
+
+    &:hover {
+        box-shadow: $box-shadow--card;
+        border-radius: 5px;
+
+        .blog_card--link {
+            color: $color-secondary--main !important;
+        }
+    }
+
+    @media only screen and (max-width: $breakpoints-md) {
+        text-align: center;
+    }
+}
+
+.bg-card {
+    width: calc(100% - 20px);
+    height: 360px;
+    position: relative;
+    color: $color-white;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    @media only screen and (max-width: $breakpoints-mmd) {
+        height: 271px;
+    }
+
+    .stamp {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    &--title {
+        font-size: 25px;
+        position: absolute;
+        left: 30px;
+        bottom: 100px;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 20px;
+        }
+    }
+
+    &--main-title {
+        font-size: 56px;
+        position: absolute;
+        left: 30px;
+        bottom: 25px;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 30px;
+        }
+    }
+
+    &--pink {
+        background-image: url("../../../public/frontend/jpgs/for-clients.png");
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $gradient-card-pink;
+        }
+    }
+
+    &--blue {
+        background-image: url("../../../public/frontend/jpgs/for-students.png");
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $gradient-card-blue;
+        }
+    }
+
+    &:hover {
+        background-size: 120%;
+    }
+}
+
+.image-card {
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #d4d4d4;
+    margin: 20px;
+    position: relative;
+
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        max-width: 120px;
+        width: auto;
+    }
+}
+
+.testimonial-tab {
+    width: 100% !important;
+}
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+
+    &--container {
+        position: relative;
+        height: 278px;
+        width: 100%;
+        @media only screen and (max-width: $breakpoints-md) {
+            height: 200px !important;
+        }
+        .card--image {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 5px;
+        }
+
+        .card--name {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .card--video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            z-index: 2;
+            display: none;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .card--play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            background-color: $color-white;
+            text-align: center;
+            z-index: 2;
+            cursor: pointer;
+            display: block;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 80px;
+                width: 80px;
+                border: 2px solid $color-white;
+                border-radius: 50%;
+                background-color: rgba($color: $color-white, $alpha: 0.5);
+            }
+
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                vertical-align: -webkit-baseline-middle;
+                height: auto !important;
+                width: auto !important;
+            }
+        }
+
+        .card--close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            width: 10px;
+            height: 10px;
+            padding: 2px;
+            background-color: $color-white;
+            text-align: center;
+            z-index: 3;
+            display: none;
+
+            img {
+                width: 10px !important;
+                height: 10px !important;
+                vertical-align: text-top;
+            }
+        }
+    }
+
+    &--title {
+        color: $color-black;
+        font-size: 18px;
+        font-weight: 700;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 16px;
+        }
+    }
+
+    &--details {
+        color: $color-grey;
+        font-size: 18px;
+        font-weight: 400;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 16px;
+        }
+    }
+}
+
+.image {
+    height: 200px;
+    margin: 20px;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+}
+
+.certificate__card {
+    text-align: center;
+
+    &--img {
+        margin-bottom: 15px;
+    }
+
+    &--title {
+        color: $color-text--dark;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+    }
+
+    &--year {
+        color: $color-text--dark;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+    }
+}
+
+.team__card {
+    position: relative;
+    max-width: 365px;
+    height: auto;
+    width: 100%;
+    margin: auto;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            394deg,
+            rgba(0, 0, 0, 0.7) 18.71%,
+            rgba(0, 0, 0, 0) 44%
+        );
+        overflow: hidden;
+    }
+
+    &--title {
+        color: $color-white;
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 30px;
+        position: absolute;
+        bottom: 50px;
+        left: 20px;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 22px;
+        }
+    }
+
+    &--subtitle {
+        color: $color-white;
+        font-size: 20px;
+        font-weight: 400;
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 18px;
+        }
+    }
+}
+
+.events__card {
+    margin: 10px;
+    padding: 10px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+
+    .image {
+        width: 100%;
+        margin: 0;
+        object-fit: cover;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+
+        h2 {
+            color: $color-black;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 18px;
+            }
+        }
+
+        .time {
+            img {
+                width: 24px;
+                height: 24px;
+
+                span {
+                    color: $color-black;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    @media only screen and (max-width: $breakpoints-md) {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+
+        .button {
+            width: 100%;
+        }
+    }
+
+    &:hover {
+        box-shadow: $box-shadow--card;
+        border-radius: 5px;
+
+        .content {
+            h2 {
+                color: $color-secondary--main;
+            }
+        }
+    }
+}

@@ -1,0 +1,128 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "components/button";
+@import "components/slider";
+@import "components/card";
+@import "components/banner";
+@import "components/tab";
+@import "components/accordion";
+@import "pages/header";
+@import "pages/home";
+@import "pages/footer";
+@import "components/bg";
+@import "components/common";
+@import "components/carousel";
+
+body {
+    font-family: $font-family;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sub-title {
+    color: $color-secondary--main;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    @media only screen and (max-width: $breakpoints-mmd) {
+        text-align: center;
+    }
+}
+.main-title {
+    color: $color-text--dark;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.1;
+    @media only screen and (max-width: $breakpoints-md) {
+        font-size: 30px;
+    }
+}
+
+.sub-title--grey {
+    color: $color-grey;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    @media only screen and (max-width: $breakpoints-md) {
+        font-size: 20px;
+    }
+}
+
+p.grey {
+    color: $color-grey;
+    font-size: 18px;
+    font-style: normal;
+}
+
+.text-white {
+    color: $color-white;
+}
+
+// Bootstrap
+.tab-pane {
+    background-color: unset;
+    &.active {
+        &:after {
+            content: none;
+        }
+    }
+}
+
+.nav-tabs .nav-item {
+    width: max-content;
+}
+.nav-tabs .nav-link {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-black;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+.nav-tabs .nav-link {
+    border: none;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-primary--main;
+    background-color: unset;
+    border-color: unset;
+    border-bottom: 3px solid $color-primary--main;
+    &:after {
+        content: none;
+    }
+}
+
+.tabs__pink {
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        color: $color-secondary--main;
+        border-bottom: 3px solid $color-secondary--main;
+    }
+    .nav-tabs {
+        border-bottom: 1px solid #a5a5a5;
+    }
+}
+
+.map {
+    iframe {
+        width: 100%;
+    }
+}
+
+.fancybox-button--zoom {
+    display: none !important;
+}

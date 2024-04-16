@@ -1,0 +1,284 @@
+.about__section {
+    display: flex;
+    max-width: $max-width;
+    margin: 70px auto;
+    align-items: flex-start;
+    justify-content: space-between;
+    &--left,
+    &--right {
+        flex: 0 0 50%;
+    }
+
+    &--left {
+        .sub-title {
+            margin-bottom: 30px;
+        }
+    }
+    &--right {
+        .sub-title--grey {
+            margin-bottom: 30px;
+        }
+    }
+    @media only screen and (max-width: $breakpoints-lg) {
+        max-width: unset;
+        margin: 70px 2.5rem;
+    }
+    @media only screen and (max-width: $breakpoints-md) {
+        flex-direction: column;
+
+        &--left {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.flex__section {
+    display: flex;
+    max-width: $max-width;
+    margin: 70px auto;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: center;
+
+    .item {
+        &-icon {
+            width: 78.049px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+        &-title {
+            color: $color-black;
+            text-align: center;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            margin-top: 25px;
+        }
+        &-number {
+            span {
+                margin-left: 6px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $breakpoints-lg) {
+        max-width: unset;
+        margin: 70px 2.5rem;
+    }
+    @media only screen and (max-width: $breakpoints-md) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+.events__section {
+    background-image: url("../../../public/frontend/jpgs/bgimage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: max-content;
+    position: relative;
+    color: $color-white;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $image-gradient;
+    }
+    &--content {
+        position: relative;
+        z-index: 1;
+        max-width: $max-width;
+        padding: 30px 0px;
+        margin: auto;
+        .sub-title {
+            margin-bottom: 15px;
+        }
+        .events__flex {
+            display: flex;
+            &--left,
+            &--right {
+                flex: 0 0 50%;
+            }
+        }
+        @media only screen and (max-width: $breakpoints-lg) {
+            .heading,
+            .event-title,
+            .events__flex {
+                max-width: unset;
+                margin-left: 2.5rem;
+                margin-right: 2.5rem;
+            }
+        }
+        @media only screen and (max-width: $breakpoints-mmd) {
+            .events__flex {
+                flex-direction: column;
+                &--left {
+                    img,
+                    div,
+                    button {
+                        text-align: center;
+                    }
+                    button {
+                        display: unset;
+                    }
+                }
+                &--right {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}
+
+.event-card {
+    .image {
+        border-radius: 5px;
+        width: 437px;
+        height: auto;
+        @media only screen and (max-width: $breakpoints-mmd) {
+            width: 300px;
+        }
+    }
+    .title {
+        color: $color-white;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 28px;
+        margin: 14px auto;
+    }
+    .details {
+        margin-bottom: 13px;
+        .time {
+            margin-right: 26px;
+            .icon {
+                width: 24px;
+                height: 24px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.blogs__section {
+    max-width: $max-width;
+    margin: 70px auto;
+
+    &--flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @media only screen and (max-width: $breakpoints-lg) {
+        max-width: unset;
+        margin: 70px 2.5rem;
+    }
+    @media only screen and (max-width: $breakpoints-mmd) {
+        .blogs__section--flex {
+            flex-direction: column;
+            .blog__card {
+                flex-direction: row !important;
+                &--image {
+                    flex: 0 0 400px;
+                }
+            }
+        }
+    }
+}
+
+.services__section {
+    display: flex;
+    max-width: $max-width;
+    margin: 70px auto;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: center;
+    gap: 30px;
+    @media only screen and (max-width: $breakpoints-lg) {
+        .bg-card {
+            margin: auto;
+        }
+    }
+    @media only screen and (max-width: $breakpoints-mmd) {
+        flex-direction: column;
+    }
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    @media only screen and (max-width: $breakpoints-mmd) {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
+
+.clients__section {
+    &--header {
+        max-width: $max-width;
+        margin: 70px auto 30px auto;
+    }
+    &--footer {
+        max-width: $max-width;
+        margin: 30px auto 40px auto;
+        text-align: center;
+        color: $color-grey;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    @media only screen and (max-width: $breakpoints-lg) {
+        &--header {
+            max-width: unset;
+            margin: 70px 2.5rem;
+        }
+    }
+}
+
+.testimonial__section {
+    margin: 70px auto;
+    &--header {
+        max-width: $max-width;
+        margin: 70px auto 30px auto;
+    }
+    @media only screen and (max-width: $breakpoints-lg) {
+        &--header {
+            max-width: unset;
+            margin: 70px 2.5rem;
+        }
+    }
+}
+
+.courses__section {
+    background-color: rgba(0, 0, 0, 0.03);
+    .main__section {
+        padding: 70px 0px;
+        margin: 0px auto;
+        max-width: $max-width;
+    }
+    @media only screen and (max-width: $breakpoints-lg) {
+        .main__section {
+            max-width: unset;
+            margin: 0px 2.5rem;
+        }
+    }
+}
+
+.faq__section--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    row-gap: 30px;
+    @media only screen and (max-width: $breakpoints-lg) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

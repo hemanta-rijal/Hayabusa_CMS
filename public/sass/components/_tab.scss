@@ -1,0 +1,159 @@
+.tab-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+    .tab-image {
+        border-radius: 5px;
+        width: 100%;
+        max-width: 570px;
+        height: auto;
+        @media only screen and (max-width: $breakpoints-mmd) {
+            max-width: 300px;
+        }
+    }
+    .tab-details {
+        flex: 0;
+    }
+    @media only screen and (max-width: $breakpoints-mmd) {
+        flex-direction: column;
+    }
+}
+
+.tab-details {
+    h2 {
+        font-size: 56px;
+        font-weight: 700;
+        text-align: left;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 30px;
+        }
+    }
+    h3 {
+        font-size: 25px;
+        font-weight: 700;
+        text-align: left;
+        margin: 5px auto;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 22px;
+        }
+    }
+    p {
+        font-weight: 400;
+        line-height: 30px;
+        color: $color-grey;
+        margin: 25px auto;
+        font-size: 18px;
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 16px;
+        }
+    }
+    .tab-btn-container {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.accordion:after {
+    content: "\002B";
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    transition: transform 0.4s;
+}
+
+.active:after {
+    content: "\2715";
+    transform: rotate(-90deg);
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.vertical-tabs {
+    .nav {
+        margin-right: 5rem !important;
+    }
+    .nav-link {
+        font-size: 18px;
+        background: unset;
+        border: none;
+        text-align: left;
+        font-weight: 700;
+        color: $color-black;
+        margin-bottom: 5px;
+        &::after {
+            display: none;
+        }
+        @media only screen and (max-width: $breakpoints-md) {
+            font-size: 16px;
+        }
+    }
+    .nav-link.active {
+        color: $color-secondary--main;
+    }
+}
+
+.tab-content {
+    width: 70%;
+    .tab-pane {
+        img {
+            width: 735px;
+            height: 345px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: $color-black;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 28px;
+            }
+        }
+        p {
+            color: $color-grey;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            @media only screen and (max-width: $breakpoints-md) {
+                font-size: 18px;
+            }
+        }
+        .button {
+            width: max-content;
+        }
+    }
+}
+
+.wide-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    .nav-item {
+        flex: 0 0 50%;
+        button {
+            width: 100%;
+        }
+    }
+}

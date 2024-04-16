@@ -1,0 +1,46 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family: "Hind", sans-serif;
+$line-height: 1.6;
+
+$color-primary--main: #0069b4;
+$color-primary--light: #0092d0;
+$color-secondary--main: #e50075;
+$color-success--main: #22ba4f;
+$color-black: #000;
+$color-white: #fff;
+$color-grey: #616161;
+$color-text--dark: #2b2b2b;
+
+$box-shadow--1: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+$box-shadow-nav: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+$box-shadow--card: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+$image-gradient: linear-gradient(
+    -230deg,
+    #0069b4 0%,
+    rgba(0, 105, 180, 0.2) 100%
+);
+$gradient-card-blue: linear-gradient(
+    355deg,
+    rgba(0, 105, 180, 0.9) 10%,
+    rgba(0, 105, 180, 0.16) 100%
+);
+$gradient-card-pink: linear-gradient(
+    355deg,
+    rgba(229, 0, 117, 0.9) 10%,
+    rgba(229, 0, 117, 0.16) 100%
+);
+$gradient-footer: linear-gradient(
+    40deg,
+    #0069b4 25%,
+    rgba(0, 105, 180, 0.4) 80%
+);
+$bg-banner-color: rgba(0, 105, 180, 0.8);
+$breakpoints-sm: 480px;
+$breakpoints-md: 768px;
+$breakpoints-mmd: 980px;
+$breakpoints-lg: 1200px;
+$max-width: 1180px;

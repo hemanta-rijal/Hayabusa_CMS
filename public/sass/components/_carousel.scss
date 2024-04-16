@@ -1,0 +1,106 @@
+.carousel-indicators {
+    z-index: 3;
+    justify-content: flex-start;
+    bottom: 5%;
+    margin-left: 5% !important;
+    border: unset !important;
+    button {
+        width: 10px !important;
+        height: 10px !important;
+        border-radius: 50%;
+    }
+    .active {
+        background-color: $color-primary--main !important;
+    }
+}
+
+.carousel-caption {
+    right: 5% !important;
+    bottom: 15% !important;
+    left: 5% !important;
+    text-align: left;
+    z-index: 3;
+
+    .carousel__flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 30px;
+        &__details {
+            flex: 0 0 45%;
+            h5 {
+                font-size: 70px;
+                @media only screen and (max-width: $breakpoints-md) {
+                    font-size: 40px;
+                }
+                font-weight: 700;
+                white-space: break-spaces;
+            }
+            p {
+                font-size: 20px;
+                @media only screen and (max-width: $breakpoints-md) {
+                    font-size: 18px;
+                }
+            }
+        }
+        &__form {
+            flex: 0 0 500px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+            justify-content: flex-end;
+            .form-group {
+                flex: 1 1 auto;
+            }
+            button.button {
+                height: 40px;
+                padding: 8px 32px;
+            }
+        }
+    }
+}
+
+.carousel-item {
+    img {
+        position: relative;
+        height: calc(100vh - 174px) !important;
+        object-fit: cover;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            11deg,
+            rgba(0, 0, 0, 0.7) 14.71%,
+            rgba(0, 0, 0, 0) 99%
+        );
+        z-index: 2;
+    }
+}
+
+.active::after {
+    content: "" !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    display: none;
+}
+
+.cslide {
+    border-bottom: 10px solid$color-primary--main;
+    &:before {
+        position: absolute;
+        background: $color-secondary--main;
+        height: 12px;
+        content: "";
+        width: 50%;
+        bottom: -10px;
+        left: 0;
+        z-index: 1;
+    }
+}
