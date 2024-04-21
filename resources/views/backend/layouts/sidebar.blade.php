@@ -181,6 +181,14 @@
                     </div>
                 </a>
             </li>
+            <li class="menu {{ Route::is('statistics.*') ? 'active' : '' }}">
+                <a href="{{ route('statistics') }}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        @include('backend.shared.svg.settings')
+                        <span>Statistics</span>
+                    </div>
+                </a>
+            </li>
 
             <li class="menu {{ Route::is('setting') ? 'active' : '' }}">
                 <a href="{{ route('setting') }}" aria-expanded="false" class="dropdown-toggle">

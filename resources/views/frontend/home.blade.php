@@ -113,12 +113,12 @@
         <div class="item">
             <img src={{ asset('frontend/svgs/book.svg') }} alt="book" class="item-icon" />
             <p class="item-title">Years of Experience</p>
-            <p class="main-title item-number">10<span>+</span></p>
+            <p class="main-title item-number">20<span>+</span></p>
         </div>
         <div class="item">
             <img src={{ asset('frontend/svgs/travel.svg') }} alt="travel" class="item-icon" />
             <p class="item-title">Our Students in Japan</p>
-            <p class="main-title item-number">900<span>+</span></p>
+            <p class="main-title item-number">1600<span>+</span></p>
         </div>
         <div class="item">
             <img src={{ asset('frontend/svgs/device.svg') }} alt="device" class="item-icon" />
@@ -181,10 +181,6 @@
                         @foreach ($events->slice(1) as $event)
                             <div class="horizontal-event-card"
                                 onclick="window.location='{{ route('frontend.events.details', $event->slug) }}'">
-                                {{--                                <div class="date"> --}}
-                                {{--                                    <span class="day">{{ $event['day'] }}</span> --}}
-                                {{--                                    <span class="month">{{ $event['month'] }}</span> --}}
-                                {{--                                </div> --}}
                                 <div class="details">{{ $events[0]->{'title_' . config('app.locale')} }}</div>
                                 <div class="icon">
                                     <img src={{ asset('frontend/svgs/arrow-right-bold.svg') }} alt="arrow">

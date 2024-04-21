@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\HelpBannerController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\StatController;
 use App\Http\Controllers\Backend\SubCourseController;
 use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\TestimonialController;
@@ -72,6 +73,10 @@ Route::group(['prefix' => 'system'], function () {
         // Settings routes
         Route::get('/site-settings', [SettingController::class, 'index'])->name('setting');
         Route::post('/site-settings', [SettingController::class, 'save'])->name('setting.save');
+
+        //statistics route
+        Route::get('/statistics',[StatController::class,'index'])->name('statistics');
+        Route::post('/statistics',[StatController::class,'store'])->name('statistics.save');
 
         // Settings routes
         Route::get('/help-banner', [HelpBannerController::class, 'index'])->name('help-banner');
