@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('metas', function (Blueprint $table) {
+        Schema::create('ctas', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
-            $table->string('title_en')->nullable();
-            $table->string('title_jp')->nullable();
-            $table->text('value_en');
-            $table->string('value_jp')->nullable();
-            $table->string('type')->default('text');
+            $table->string('main_title');
+            $table->string('sup_title');
+            $table->string('image');
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metas');
+        Schema::dropIfExists('ctas');
     }
 };

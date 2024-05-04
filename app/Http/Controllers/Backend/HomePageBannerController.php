@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
+use App\Traits\ImageTrait;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class StatController extends Controller
+class HomePageBannerController extends Controller
 {
+    use ImageTrait;
+    public string $image_path = 'uploads/images/banner';
     /**
      * Display a listing of the resource.
      *
@@ -15,18 +20,18 @@ class StatController extends Controller
      */
     public function index()
     {
-        $stat = Meta::where('key', 'like', 'stat.%')->get();
-        return view('backend.stat.index')->with('allStat', $stat);
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\View
      */
     public function create()
     {
-        //
+        $homeBanner = Meta::where('key', 'homeBanner.title')->get(['value_en']);
+        return view('backend.banners.homePageBanner')->with('homeBanner', $homeBanner);
     }
 
     /**
@@ -36,22 +41,36 @@ class StatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $requestData = $request->except('_token');
-        foreach ($requestData['key'] as $index => $key) {
-            // Find or create the Meta record based on the key
-            $meta = Meta::where(['key' => $key])->update(
-                [
-                    'title_en' => $requestData['title_en'][$index],
-                    'title_jp' => $requestData['title_jp'][$index],
-                    'value_en' => $requestData['value_en'][$index],
-                    'value_jp' => $requestData['value_jp'][$index],
-                ]
-            );
+{
+    try {
+        DB::beginTransaction();
+        
+        $imageFile = '';
+        $data = $request->except('_token');
+        $meta = Meta::firstOrNew(['key' => 'homeBanner.title']);
+        if ($request->hasFile('image')) {
+            $imageFile = $this->saveOriginalImage($request->image);
+        } else {
+            if ($meta->exists) {
+                $value_en = json_decode($meta->value_en);
+                $imageFile = $value_en->image ?? '';
+            }
         }
-        return redirect()->back()->with('success', 'Successfully updated Statistics');
+        $data['image'] = $imageFile;
+        $value_en = json_encode($data);
+        $meta->fill([
+            'title_en' => 'Home Page Title',
+            'title_jp' => 'Home Page Title (JP)',
+            'value_en' => $value_en,
+            'type' => 'json'
+        ])->save();
+        DB::commit();
+        return redirect()->route('home-banner')->with('success', 'Home Banner Update Successfully!!!');
+    } catch (Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', 'Failed to update Home Banner. Please try again.');
     }
-
+}
 
     /**
      * Display the specified resource.

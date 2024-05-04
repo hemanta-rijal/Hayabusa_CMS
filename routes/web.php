@@ -4,10 +4,13 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactBannerController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\CTAController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\HelpBannerController;
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\HomePageBannerController;
+use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\StatController;
@@ -30,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::middleware(['web', SetLocale::class])->group(function () {
     Route::get('/', [FrontPageController::class, 'home'])->name('frontend.home');
     Route::get('/about-us', [FrontPageController::class, 'about'])->name('frontend.about');
@@ -68,6 +72,13 @@ Route::group(['prefix' => 'system'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::post('/sort-table', [UtilityController::class, 'positionSort'])->name('position-sort');
 
+
+        Route::get('manage-menus/{id?}', [MenuController::class, 'index'])->name('menu.index');
+        Route::post('create-menu', [menuController::class, 'store'])->name('menu.store');
+
+        Route::post('menu-items', [menuController::class, 'storeMenuItems'])->name('menu-item.store');
+
+
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
         // Settings routes
@@ -75,12 +86,18 @@ Route::group(['prefix' => 'system'], function () {
         Route::post('/site-settings', [SettingController::class, 'save'])->name('setting.save');
 
         //statistics route
-        Route::get('/statistics',[StatController::class,'index'])->name('statistics');
-        Route::post('/statistics',[StatController::class,'store'])->name('statistics.save');
+        Route::get('/statistics', [StatController::class, 'index'])->name('statistics');
+        Route::post('/statistics', [StatController::class, 'store'])->name('statistics.save');
+
+
 
         // Settings routes
         Route::get('/help-banner', [HelpBannerController::class, 'index'])->name('help-banner');
         Route::post('/help-banner', [HelpBannerController::class, 'save'])->name('help-banner.save');
+
+        //home banners
+        Route::get('/home-banner', [HomePageBannerController::class, 'create'])->name('home-banner');
+        Route::post('/home-banner', [HomePageBannerController::class, 'store'])->name('home-banner.save');
 
         // Settings routes
         Route::get('/contact-banner', [ContactBannerController::class, 'index'])->name('contact-banner');
@@ -107,6 +124,10 @@ Route::group(['prefix' => 'system'], function () {
         // Blog CRUD Routes
         Route::resource('blogs', BlogController::class)->except(['show']);
         Route::post('/blogs/{blog}/{imageId}/remove_image', [BlogController::class, 'removeImage']);
+
+        //ctas 
+
+        Route::resource('ctas', CTAController::class)->except(['show']);
 
         // Event CRUD Routes
         Route::resource('events', EventController::class)->except(['show']);
@@ -150,6 +171,5 @@ Route::group(['prefix' => 'system'], function () {
         Route::get('/page/about', [PageController::class, 'aboutIndex'])->name('page.about');
         Route::post('/page/about', [PageController::class, 'aboutSave'])->name('page.about.save');
         Route::post('/page/{imageId}/about/remove_image', [PageController::class, 'removeAboutImage'])->name('page.about.remove-img');
-
     });
 });

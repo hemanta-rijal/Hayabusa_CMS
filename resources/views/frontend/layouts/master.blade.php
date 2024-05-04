@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=66258e16a8f511001936850a&product=sop' async='async'></script>
 </head>
 
 <body class="@yield('body-class', '')">

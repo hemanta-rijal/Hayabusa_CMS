@@ -56,6 +56,7 @@
                 </div>
             </div>
             <div class="flex-50" data-aos="fade-up">
+                <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
                 <p class="grey">
                     {!! $event->{'description_' . config('app.locale')} !!}
                 </p>

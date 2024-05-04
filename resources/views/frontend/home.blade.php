@@ -1,89 +1,121 @@
 @php
-    $icons = ['frontend/clients/logo1.png', 'frontend/clients/logo2.png', 'frontend/clients/logo3.png', 'frontend/clients/logo4.png', 'frontend/clients/logo5.png', 'frontend/clients/logo6.png', 'frontend/clients/logo7.png'];
-    $testimonials = [
-        ['img' => 'frontend/jpgs/testimonial1.png', 'name' => 'Emily Jhonson', 'title' => 'Courses at Hayabusa were incredibly informative, well-structured, and tailored to meet my specific needs.', 'desc' => 'I cannot express how grateful I am to Hayabusa Consultancy for their exceptional services in helping me prepare for my journey to Japan.'],
-        ['img' => 'frontend/jpgs/testimonial1.png', 'name' => 'Emily Jhonson', 'title' => 'Courses at Hayabusa were incredibly informative, well-structured, and tailored to meet my specific needs.', 'desc' => 'I cannot express how grateful I am to Hayabusa Consultancy for their exceptional services in helping me prepare for my journey to Japan.'],
-        ['img' => 'frontend/jpgs/testimonial1.png', 'name' => 'Emily Jhonson', 'title' => 'Courses at Hayabusa were incredibly informative, well-structured, and tailored to meet my specific needs.', 'desc' => 'I cannot express how grateful I am to Hayabusa Consultancy for their exceptional services in helping me prepare for my journey to Japan.'],
+    $icons = [
+        'frontend/clients/logo1.png',
+        'frontend/clients/logo2.png',
+        'frontend/clients/logo3.png',
+        'frontend/clients/logo4.png',
+        'frontend/clients/logo5.png',
+        'frontend/clients/logo6.png',
+        'frontend/clients/logo7.png',
     ];
+
     $courses = [
-        ['title' => 'JLPT', 'img' => 'frontend/jpgs/course.png', 'fullform' => 'Japanese-Language Proficiency Test', 'details' => 'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).', 'route1' => 'frontend.about', 'route2' => 'frontend.about'],
-        ['title' => 'JFT', 'img' => 'frontend/jpgs/course.png', 'fullform' => 'Japanese-Language Proficiency Test', 'details' => 'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).', 'route1' => 'frontend.about', 'route2' => 'frontend.about'],
-        ['title' => 'NAT', 'img' => 'frontend/jpgs/course.png', 'fullform' => 'Japanese-Language Proficiency Test', 'details' => 'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).', 'route1' => 'frontend.about', 'route2' => 'frontend.about'],
-        ['title' => 'Skills', 'img' => 'frontend/jpgs/course.png', 'fullform' => 'Japanese-Language Proficiency Test', 'details' => 'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).', 'route1' => 'frontend.about', 'route2' => 'frontend.about'],
+        [
+            'title' => 'JLPT',
+            'img' => 'frontend/jpgs/course.png',
+            'fullform' => 'Japanese-Language Proficiency Test',
+            'details' =>
+                'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).',
+            'route1' => 'frontend.about',
+            'route2' => 'frontend.about',
+        ],
+        [
+            'title' => 'JFT',
+            'img' => 'frontend/jpgs/course.png',
+            'fullform' => 'Japanese-Language Proficiency Test',
+            'details' =>
+                'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).',
+            'route1' => 'frontend.about',
+            'route2' => 'frontend.about',
+        ],
+        [
+            'title' => 'NAT',
+            'img' => 'frontend/jpgs/course.png',
+            'fullform' => 'Japanese-Language Proficiency Test',
+            'details' =>
+                'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).',
+            'route1' => 'frontend.about',
+            'route2' => 'frontend.about',
+        ],
+        [
+            'title' => 'Skills',
+            'img' => 'frontend/jpgs/course.png',
+            'fullform' => 'Japanese-Language Proficiency Test',
+            'details' =>
+                'The Japanese-Language Proficiency Test, or JLPT, is a standardized criterion-referenced test to evaluate and certify Japanese language proficiency for non-native speakers, covering language knowledge, reading ability, and listening ability. The test is held twice a year in Japan and selected countries (on the first Sunday of July and December), and once a year in other regions (either on the first Sunday of December or July depending on region).',
+            'route1' => 'frontend.about',
+            'route2' => 'frontend.about',
+        ],
     ];
     $slides = [
         [
             'imageSrc' => 'frontend/jpgs/banner.png',
             'title' => 'Study & Work In Japan',
-            'description' => 'We provide a Pathway to Japanese Language Excellence and Study Abroad Adventures in Japan!',
+            'description' =>
+                'We provide a Pathway to Japanese Language Excellence and Study Abroad Adventures in Japan!',
             'formInput' => [
                 'label' => 'Your Email ID',
                 'placeholder' => 'Send us your email to join us today',
             ],
             'buttonText' => 'Contact Us',
         ],
-        [
-            'imageSrc' => 'frontend/jpgs/banner.png',
-            'title' => 'Study & Work In Japan',
-            'description' => 'We provide a Pathway to Japanese Language Excellence and Study Abroad Adventures in Japan!',
-            'buttonText' => 'View Details',
-        ],
     ];
-    
+    $homeBanner = !$homeBanner->isEmpty() ? json_decode($homeBanner->first()->value_en) : null;
+
 @endphp
 
 
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div id="carouselExampleCaptions" class="carousel slide cslide">
-        <div class="carousel-indicators">
-            <!-- Indicator buttons -->
-            @foreach ($slides as $index => $slide)
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $index }}"
-                    class="{{ $index === 0 ? 'active' : '' }}" aria-current="{{ $index === 0 ? 'true' : 'false' }}"
-                    aria-label="Slide {{ $index + 1 }}"></button>
-            @endforeach
-        </div>
-        <div class="carousel-inner">
-            <!-- Carousel slides -->
-            @foreach ($slides as $index => $slide)
-                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                    <img src="{{ $slide['imageSrc'] }}" class="d-block w-100" alt="Slide {{ $index + 1 }}" />
+    @if ($homeBanner !== null)
+        <div id="carouselExampleCaptions" class="carousel slide cslide">
+            <div class="carousel-inner">
+                <!-- Carousel slides -->
+                <div class="carousel-item active">
+                    <img src="{{ URL::asset('uploads/images/banner/'.$homeBanner->image) }}" class="d-block w-100" alt="Slide" />
                     <div class="carousel-caption d-none d-md-block">
                         <div class="carousel__flex">
                             <div class="carousel__flex__details">
-                                <h5>{{ $slide['title'] }}</h5>
-                                <p>{{ $slide['description'] }}</p>
+                                <h5>{{ $homeBanner->{'title_'.config('app.locale')} }}</h5>
+                                <p>{{ $homeBanner->{'description_'.config('app.locale')} }}</p>
                             </div>
-                            @if (isset($slide['formInput']))
-                                <div class="carousel__flex__form">
-                                    <div class="form-group">
-                                        <label for="email">{{ $slide['formInput']['label'] }}</label>
-                                        <input type="email" class="form-control" id="email"
-                                            placeholder="{{ $slide['formInput']['placeholder'] }}" autocomplete="off" />
-                                    </div>
-                                    <button class="button">{{ $slide['buttonText'] }}</button>
-                                </div>
-                            @elseif ($slide['buttonText'])
-                                <div class="carousel__flex__form">
-                                    <button class="button">{{ $slide['buttonText'] }}</button>
-                                </div>
-                            @endif
+                        </div>
+                        <div class="carousel__flex">
+                            <div class="carousel__flex__form">
+                                <a class="button" href="{{ $homeBanner->button_1->link }}" target="{{ $homeBanner->button_1->target }}">
+                                    {{ $homeBanner->button_1->{'title_'.config('app.locale')} }}
+                                </a>
+                                <a class="button" href="{{ $homeBanner->button_2->link }}" target="{{ $homeBanner->button_2->target }}">
+                                    {{ $homeBanner->button_2->{'title_'.config('app.locale')} }}
+                                </a>
+                                <a class="button" href="{{ $homeBanner->button_3->link }}" target="{{ $homeBanner->button_3->target }}">
+                                    {{ $homeBanner->button_3->{'title_'.config('app.locale')} }}
+                                </a>
+                                <a class="button" href="{{ $homeBanner->button_3->link }}" target="{{ $homeBanner->button_3->target }}">
+                                    {{ $homeBanner->button_4->{'title_'.config('app.locale')} }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    @endif
+
+    {{-- CTA Section --}}
+    <div class="services__section">
+        @foreach ($ctas as $cta)
+            <div class="bg-card bg-card--blue" onclick="window.location='{{ url($cta->link) }}'" data-aos="fade-up">
+                <img src="{{ $cta->image_link }}" class="stamp" />
+                <div class="bg-card--title">{{ $cta['sup_title_' . config('app.locale')] }}</div>
+                <div class="bg-card--main-title">{{ $cta['main_title_' . config('app.locale')] }}</div>
+            </div>
+        @endforeach
     </div>
+
+
+    {{-- CTA Section --}}
 
 
     {{-- About Us Section --}}
@@ -112,23 +144,27 @@
     <div class="flex__section" data-aos="fade-up">
         <div class="item">
             <img src={{ asset('frontend/svgs/book.svg') }} alt="book" class="item-icon" />
-            <p class="item-title">Years of Experience</p>
-            <p class="main-title item-number">20<span>+</span></p>
+            <p class="item-title">{{ getMetaByKey('stat.experience')['title_' . config('app.locale')] }}</p>
+            <p class="main-title item-number">
+                {{ getMetaByKey('stat.experience')['value_' . config('app.locale')] }}<span>+</span></p>
         </div>
         <div class="item">
             <img src={{ asset('frontend/svgs/travel.svg') }} alt="travel" class="item-icon" />
-            <p class="item-title">Our Students in Japan</p>
-            <p class="main-title item-number">1600<span>+</span></p>
+            <p class="item-title">{{ getMetaByKey('stat.student_in_japan')['title_' . config('app.locale')] }}</p>
+            <p class="main-title item-number">
+                {{ getMetaByKey('stat.student_in_japan')['value_' . config('app.locale')] }}<span>+</span></p>
         </div>
         <div class="item">
             <img src={{ asset('frontend/svgs/device.svg') }} alt="device" class="item-icon" />
-            <p class="item-title">Interview Taken</p>
-            <p class="main-title item-number">1200<span>+</span></p>
+            <p class="item-title">{{ getMetaByKey('stat.cities')['title_' . config('app.locale')] }}</p>
+            <p class="main-title item-number">
+                {{ getMetaByKey('stat.cities')['value_' . config('app.locale')] }}<span>+</span></p>
         </div>
         <div class="item">
             <img src={{ asset('frontend/svgs/star.svg') }} alt="star" class="item-icon" />
-            <p class="item-title">Valuable Clients</p>
-            <p class="main-title item-number">30<span>+</span></p>
+            <p class="item-title">{{ getMetaByKey('stat.affilated_college')['title_' . config('app.locale')] }}</p>
+            <p class="main-title item-number">
+                {{ getMetaByKey('stat.affilated_college')['value_' . config('app.locale')] }}<span>+</span></p>
         </div>
     </div>
 
@@ -181,7 +217,7 @@
                         @foreach ($events->slice(1) as $event)
                             <div class="horizontal-event-card"
                                 onclick="window.location='{{ route('frontend.events.details', $event->slug) }}'">
-                                <div class="details">{{ $events[0]->{'title_' . config('app.locale')} }}</div>
+                                <div class="details">{{ $event->{'title_' . config('app.locale')} }}</div>
                                 <div class="icon">
                                     <img src={{ asset('frontend/svgs/arrow-right-bold.svg') }} alt="arrow">
                                 </div>
@@ -305,7 +341,7 @@
     {{-- Clients Section --}}
     <div class="clients__section" data-aos="fade-up">
         <div class="clients__section--header">
-            <div class="sub-title">Featured Clients</div>
+            <div class="sub-title">Affiliated College</div>
             <div class="heading">
                 <div class="main-title ">We Work With The Best</div>
                 <button onclick="window.location='{{ route('frontend.clients') }}'" class="button">View Our
@@ -410,15 +446,35 @@
                     <div class="slide">
                         <div class="testimonial-card">
                             <div class="testimonial-card--container" style="width: 500px">
-                                <img src={{ asset($testimonial['img']) }} class="card--image" style="width: 500px" />
+                                <img src={{ asset($testimonial['image_link']) }} class="card--image" style="width: 500px"
+                                    @if ($testimonial['youtube'] != null) onclick="playVideo(
+                                             'student-video-{{ $index }}', '{{ $testimonial->youtube }}',
+                                             'student-card--close-{{ $index }}', 'student-card--play-{{ $index }}')" @endif />
                                 <div class="card--name">
                                     <div class="pills">
-                                        <div class="pills-text"> {{ $testimonial['name'] }}</div>
+                                        <div class="pills-text"> {{ $testimonial['name_' . config('app.locale')] }}</div>
                                     </div>
                                 </div>
+                                @if ($testimonial['youtube'])
+                                    <div class="card--play" id='student-card--play-{{ $index }}'
+                                        onclick="playVideo(
+                                 'student-video-{{ $index }}', '{{ $testimonial->youtube }}',
+                                 'student-card--close-{{ $index }}', 'student-card--play-{{ $index }}')">
+                                        <img src="{{ asset('frontend/icons/play.png') }}" alt="img" />
+                                    </div>
+                                    <div class="card--close" id='student-card--close-{{ $index }}'
+                                        onclick="closeVideo(
+                             'student-video-{{ $index }}',
+                             'student-card--close-{{ $index }}',
+                             'student-card--play-{{ $index }}')">
+                                        <img src="{{ asset('frontend/icons/close.png') }}" alt="img" />
+                                    </div>
+                                @endif
                             </div>
-                            <div class="testimonial-card--title"> {{ $testimonial['title'] }}</div>
-                            <div class="testimonial-card--details">{{ $testimonial['desc'] }}</div>
+                            <div class="testimonial-card--title" style="text-align: justify">
+                                {{ $testimonial['tagline_' . config('app.locale')] }}</div>
+                            <div class="testimonial-card--details" style="text-align: justify">{!! Str::limit($testimonial['testimonial_' . config('app.locale')], 100, '...') !!}
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -427,12 +483,42 @@
                     <div class="slide">
                         <div class="testimonial-card">
                             <div class="testimonial-card--container" style="width: 500px">
-                                <img src={{ asset($testimonial['img']) }} class="card--image" style="width: 500px" />
-                                <div class="card--name">
-                                    <div class="pills">
-                                        <div class="pills-text"> {{ $testimonial['name'] }}</div>
+                                @if (isset($testimonial->youtube))
+                                    <img src="{{ $testimonial->image_link }}" style="height: 100% ;width:100%"
+                                        alt="img"
+                                        onclick="playVideo(
+                                             'student-video-{{ $index }}', '{{ $testimonial->youtube }}',
+                                             'student-card--close-{{ $index }}', 'student-card--play-{{ $index }}')" />
+                                    <div id="{{ 'student-video-' . $index }}" class="card--video"></div>
+
+                                    <div class="card--play" id='student-card--play-{{ $index }}'
+                                        onclick="playVideo(
+                                             'student-video-{{ $index }}', '{{ $testimonial->youtube }}',
+                                             'student-card--close-{{ $index }}', 'student-card--play-{{ $index }}')">
+                                        <img src="{{ asset('frontend/icons/play.png') }}" alt="img" />
                                     </div>
-                                </div>
+                                    <div class="card--close" id='student-card--close-{{ $index }}'
+                                        onclick="closeVideo(
+                                         'student-video-{{ $index }}',
+                                         'student-card--close-{{ $index }}',
+                                         'student-card--play-{{ $index }}')">
+                                        <img src="{{ asset('frontend/icons/close.png') }}" alt="img" />
+                                    </div>
+                                    <div class="card--name">
+                                        <div class="pills">
+                                            <div class="pills-text">
+                                                {{ $testimonial->{'name_' . config('app.locale')} }}</div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <img src="{{ $testimonial->image_link }}" class="card--image" alt="img" />
+                                    <div class="card--name">
+                                        <div class="pills">
+                                            <div class="pills-text">
+                                                {{ $testimonial->{'name_' . config('app.locale')} }}</div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                             <div class="testimonial-card--title"> {{ $testimonial['title'] }}</div>
                             <div class="testimonial-card--details">{{ $testimonial['desc'] }}</div>
@@ -494,3 +580,57 @@
         </div>
     </div>
 @endsection
+@push('custom-js')
+    <script type="text/javascript">
+        function playVideo(id, videoLink, closeId, playId) {
+            const playerDiv = document.getElementById(id);
+            const playBtn = document.getElementById(playId);
+            const close = document.getElementById(closeId);
+            playerDiv.style.display = "block";
+            playBtn.style.display = "none";
+            close.style.display = "block";
+            playerDiv.innerHTML = '<iframe id="videoPlayer-' + id + '" src="' + videoLink +
+                '?enablejsapi=1&version=3&playerapiid=ytplayer&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+
+            const player = new YT.Player("videoPlayer-" + id, {
+                events: {
+                    onReady: function(event) {
+                        event.target.playVideo();
+                    }
+                }
+            });
+        }
+
+        function closeVideo(id, closeId, playId) {
+            const playerDiv = document.getElementById(id);
+            const playButton = document.getElementById(playId);
+            const closeButton = document.getElementById(closeId);
+
+            playerDiv.innerHTML = "";
+            playerDiv.style.display = "none";
+            playButton.style.display = "block";
+            closeButton.style.display = "none";
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navTabs = document.querySelectorAll('.services-nav-link');
+            const tabPanes = document.querySelectorAll('.services-tab-pane');
+
+            navTabs.forEach(function(navTab) {
+                navTab.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const selectedTabId = this.getAttribute('data-bs-target').replace('#', '');
+                    tabPanes.forEach(function(tabPane) {
+                        if (tabPane.id === selectedTabId) {
+                            tabPane.style.display = 'block';
+                            tabPane.style.opacity = '1';
+                        } else {
+                            tabPane.style.display = 'none';
+                            tabPane.style.opacity = '0';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+@endpush

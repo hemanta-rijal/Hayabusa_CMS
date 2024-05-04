@@ -9,6 +9,8 @@ use App\Models\Course;
 use App\Models\Event;
 use App\Models\EventParticipant;
 use App\Models\Faq;
+use App\Models\Meta;
+use App\Models\Models\CTA;
 use App\Models\Page\AboutNepalPage;
 use App\Models\Page\AboutPage;
 use App\Models\Page\BlogPage;
@@ -38,8 +40,11 @@ class PageController extends Controller
         $blogs = Blog::orderByDesc('created_at')->take(3)->get();
         $faqs = Faq::orderBy('position')->take(6)->get();
         $course = Course::with('subCourses')->orderBy('position')->take(1)->first();
+        $ctas = CTA::orderBy('created_at','desc')->take(2)->get();
+        $testimonials = Testimonial::all();
+        $homeBanner = Meta::where('key', 'homeBanner.title')->get(['value_en']);
         return view('frontend.home', compact(
-            'events', 'blogs', 'faqs', 'course'
+            'events', 'blogs', 'faqs', 'course','ctas','testimonials','homeBanner'
         ));
     }
 

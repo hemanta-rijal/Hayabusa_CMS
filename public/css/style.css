@@ -2378,19 +2378,23 @@ p.details {
   }
 }
 .carousel-caption .carousel__flex__form {
-  flex: 0 0 500px;
+  flex: 0 0 50%;
   display: flex;
   gap: 10px;
   align-items: flex-end;
   justify-content: flex-end;
 }
-.carousel-caption .carousel__flex__form .form-group {
+.carousel-caption .carousel__flex__form a {
   flex: 1 1 auto;
 }
-.carousel-caption .carousel__flex__form button.button {
-  height: 40px;
+.carousel-caption .carousel__flex__form a.button {
+  /* height: 40px; */
   padding: 8px 32px;
 }
+.carousel-caption .carousel__flex__form a:hover{
+  color: #eee;
+} 
+
 
 .carousel-item img {
   position: relative;
