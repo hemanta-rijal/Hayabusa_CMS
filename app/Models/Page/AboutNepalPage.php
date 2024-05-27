@@ -62,7 +62,7 @@ class AboutNepalPage extends Model
         'details' => 'array'
     ];
 
-    protected $appends = ['image_link', 'page_image_link'];
+    protected $appends = ['image_link', 'page_image_link','section_one_image','section_two_image'];
 
     public function getImageLinkAttribute(): ?string
     {
@@ -72,6 +72,15 @@ class AboutNepalPage extends Model
     public function getPageImageLinkAttribute(): ?string
     {
         return isset($this->page_image) ? asset('uploads/images/pages/about_nepal/' . $this->page_image) : null;
+    }
+
+    public function getSectionOneImageAttribute(): ?string
+    {
+        return isset($this->section_1_image) ? asset('uploads/images/pages/about_nepal/' . $this->section_1_image) : null; 
+    }
+    public function getSectionTwoImageAttribute(): ?string
+    {
+        return isset($this->section_2_image) ? asset('uploads/images/pages/about_nepal/' . $this->section_2_image) : null; 
     }
 
     public function images(): HasMany

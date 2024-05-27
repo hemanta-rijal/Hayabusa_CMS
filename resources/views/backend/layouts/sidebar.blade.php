@@ -7,7 +7,7 @@
                 <div class="nav-item theme-logo">
                     <a href="{{ route('dashboard') }}">
                         <img src="https://designreset.com/cork/html/src/assets/img/logo.svg" class="navbar-logo"
-                             alt="logo">
+                            alt="logo">
                     </a>
                 </div>
                 <div class="nav-item theme-text">
@@ -33,9 +33,8 @@
             </li>
 
             <li class="menu {{ Route::is('page.*') ? 'active' : '' }}">
-                <a href="#pages" data-bs-toggle="collapse"
-                   aria-expanded="{{ Route::is('page.*') ? 'true' : 'false' }}"
-                   class="dropdown-toggle {{ Route::is('page.*') ? '' : 'collapsed' }}">
+                <a href="#pages" data-bs-toggle="collapse" aria-expanded="{{ Route::is('page.*') ? 'true' : 'false' }}"
+                    class="dropdown-toggle {{ Route::is('page.*') ? '' : 'collapsed' }}">
                     <div class="">
                         @include('backend.shared.svg.align-justify')
                         <span>Pages</span>
@@ -44,39 +43,39 @@
                         @include('backend.shared.svg.chevron-right')
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ Route::is('page.*') ? 'show' : '' }}"
-                    id="pages" data-bs-parent="#accordionExample">
-                    <li class="{{ Route::is('page.course') ? 'active': '' }}">
+                <ul class="collapse submenu list-unstyled {{ Route::is('page.*') ? 'show' : '' }}" id="pages"
+                    data-bs-parent="#accordionExample">
+                    <li class="{{ Route::is('page.course') ? 'active' : '' }}">
                         <a href="{{ route('page.course') }}"> Course </a>
                     </li>
-                    <li class="{{ Route::is('page.event') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.event') ? 'active' : '' }}">
                         <a href="{{ route('page.event') }}"> Event </a>
                     </li>
-                    <li class="{{ Route::is('page.blog') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.blog') ? 'active' : '' }}">
                         <a href="{{ route('page.blog') }}"> Blog </a>
                     </li>
-                    <li class="{{ Route::is('page.client') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.client') ? 'active' : '' }}">
                         <a href="{{ route('page.client') }}"> Client </a>
                     </li>
-                    <li class="{{ Route::is('page.faq') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.faq') ? 'active' : '' }}">
                         <a href="{{ route('page.faq') }}"> Faq </a>
                     </li>
-                    <li class="{{ Route::is('page.about') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.about') ? 'active' : '' }}">
                         <a href="{{ route('page.about') }}"> About Company </a>
                     </li>
-                    <li class="{{ Route::is('page.about-nepal') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.about-nepal') ? 'active' : '' }}">
                         <a href="{{ route('page.about-nepal') }}"> About Nepal </a>
                     </li>
-                    <li class="{{ Route::is('page.work-in-japan') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.work-in-japan') ? 'active' : '' }}">
                         <a href="{{ route('page.work-in-japan') }}"> Work in Japan </a>
                     </li>
-                    <li class="{{ Route::is('page.study-in-japan') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.study-in-japan') ? 'active' : '' }}">
                         <a href="{{ route('page.study-in-japan') }}"> Study in Japan </a>
                     </li>
-                    <li class="{{ Route::is('page.student-services') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.student-services') ? 'active' : '' }}">
                         <a href="{{ route('page.student-services') }}"> Services for students </a>
                     </li>
-                    <li class="{{ Route::is('page.client-services') ? 'active': '' }}">
+                    <li class="{{ Route::is('page.client-services') ? 'active' : '' }}">
                         <a href="{{ route('page.client-services') }}"> Services for clients </a>
                     </li>
                 </ul>
@@ -84,8 +83,8 @@
 
             <li class="menu {{ Route::is('help-banner') || Route::is('contact-banner') ? 'active' : '' }}">
                 <a href="#banners" data-bs-toggle="collapse"
-                   aria-expanded="{{ Route::is('help-banner') || Route::is('contact-banner') ? 'true' : 'false' }}"
-                   class="dropdown-toggle {{ Route::is('help-banner') || Route::is('contact-banner') ? '' : 'collapsed' }}">
+                    aria-expanded="{{ Route::is('help-banner') || Route::is('contact-banner') ? 'true' : 'false' }}"
+                    class="dropdown-toggle {{ Route::is('help-banner') || Route::is('contact-banner') ? '' : 'collapsed' }}">
                     <div class="">
                         @include('backend.shared.svg.flag')
                         <span>Banners</span>
@@ -96,19 +95,23 @@
                 </a>
                 <ul class="collapse submenu list-unstyled {{ Route::is('help-banner') || Route::is('contact-banner') ? 'show' : '' }}"
                     id="banners" data-bs-parent="#accordionExample">
-                    <li class="{{ Route::is('help-banner') ? 'active': '' }}">
+                    <li class="{{ Route::is('home-banner') ? 'active' : '' }}">
+                        <a href="{{ route('home-banner') }}"> Home Banner </a>
+                    </li>
+                    <li class="{{ Route::is('help-banner') ? 'active' : '' }}">
                         <a href="{{ route('help-banner') }}"> Help Banner </a>
                     </li>
-                    <li class="{{ Route::is('contact-banner') ? 'active': '' }}">
+                    <li class="{{ Route::is('contact-banner') ? 'active' : '' }}">
                         <a href="{{ route('contact-banner') }}"> Contact Banner </a>
                     </li>
+                    
                 </ul>
             </li>
 
             <li class="menu {{ Route::is('courses.*') || Route::is('subCourses.*') ? 'active' : '' }}">
                 <a href="#courses" data-bs-toggle="collapse"
-                   aria-expanded="{{ Route::is('courses.*') || Route::is('subCourses.*') ? 'true' : 'false' }}"
-                   class="dropdown-toggle {{ Route::is('courses.*') || Route::is('subCourses.*') ? '' : 'collapsed' }}">
+                    aria-expanded="{{ Route::is('courses.*') || Route::is('subCourses.*') ? 'true' : 'false' }}"
+                    class="dropdown-toggle {{ Route::is('courses.*') || Route::is('subCourses.*') ? '' : 'collapsed' }}">
                     <div class="">
                         @include('backend.shared.svg.book')
                         <span>Courses</span>
@@ -119,10 +122,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled {{ Route::is('courses.*') || Route::is('subCourses.*') ? 'show' : '' }}"
                     id="courses" data-bs-parent="#accordionExample">
-                    <li class="{{ Route::is('courses.*') ? 'active': '' }}">
+                    <li class="{{ Route::is('courses.*') ? 'active' : '' }}">
                         <a href="{{ route('courses.index') }}"> Course </a>
                     </li>
-                    <li class="{{ Route::is('subCourses.*') ? 'active': '' }}">
+                    <li class="{{ Route::is('subCourses.*') ? 'active' : '' }}">
                         <a href="{{ route('subCourses.index') }}"> Sub Course </a>
                     </li>
                 </ul>
@@ -145,12 +148,28 @@
                     </div>
                 </a>
             </li>
+            <li class="menu {{ Route::is('cta.*') ? 'active' : '' }}">
+                <a href="{{ route('ctas.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        @include('backend.shared.svg.sunset')
+                        <span>CTA</span>
+                    </div>
+                </a>
+            </li>
 
             <li class="menu {{ Route::is('faqs.*') ? 'active' : '' }}">
                 <a href="{{ route('faqs.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         @include('backend.shared.svg.help-circle')
                         <span>FAQs</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu {{ Route::is('contact.*') ? 'active' : '' }}">
+                <a href="{{ route('contact.index') }}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        @include('backend.shared.svg.help-circle')
+                        <span>Contact</span>
                     </div>
                 </a>
             </li>

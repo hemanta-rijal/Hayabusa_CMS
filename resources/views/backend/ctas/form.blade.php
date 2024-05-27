@@ -60,7 +60,7 @@
                 <div class="multiple-file-upload">
                     <input id="image" name="image" type="file" class="file-input-preview"
                            accept="image/png,image/jpeg,image/jpg"
-                           data-browse-on-zone-click="true" {{ $cta->id ? '' : 'required' }}
+                           data-browse-on-zone-click="true" {{ isset($cta) ? '' : 'required' }}
                            data-allowed-file-extensions='["png", "jpg", "jpeg"]'>
                 </div>
                 @include('backend.shared.form_field_error', ['name' => 'image'])

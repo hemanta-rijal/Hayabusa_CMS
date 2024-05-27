@@ -1,5 +1,5 @@
 @php
-    
+    $contactPage = !$contactPage->isEmpty() ? json_decode($contactPage->first()->value_en) : null;
 @endphp
 
 @extends('frontend.layouts.master')
@@ -7,16 +7,22 @@
     <div class="map">
         {!! $siteData->map !!}
     </div>
+    <div class="bgbanner-details" data-aos="fade-up">
+        <p>
+            {{ optional($contactPage)->{'contact_page_description_'.config('app.locale')} }} 
+        </p>
+        {!! convertJsonToButton(optional($contactPage)->button,'button') !!}
+    </div>
 
     <div class="container">
         <div class="d-flex events-flex" style="justify-content: space-between">
             <div class="flex-50" data-aos="fade-up">
                 <div class="bg__contact">
                     <div class="heading">
-                        <div class="main-title ">Send Us A Message</div>
+                        <div class="main-title ">{{ optional($contactPage)->{'send_message_title_'.config('app.locale')} }} </div>
                     </div>
-                    <p class="grey">If you have any questions regarding recruitment or recruitment, please contact us via
-                        message or inquiry.
+                    <p class="grey">
+                        {{ optional($contactPage)->{'send_message_description_'.config('app.locale')} }}
                     </p>
                     <div class="d-flex flex__column">
                         <div class="contact__item">
@@ -24,7 +30,7 @@
                                 <img src={{ asset('frontend/svgs/phone.svg') }} />
                             </div>
                             <div class="content">
-                                <p class="title">Phone</p>
+                                <p class="title">@lang('site.contact form.Phone')</p>
                                 <p class="bold">01-4002139 | 01-4002151</p>
                             </div>
                         </div>
@@ -33,7 +39,7 @@
                                 <img src={{ asset('frontend/svgs/pin.svg') }} />
                             </div>
                             <div class="content">
-                                <p class="title">Location</p>
+                                <p class="title">@lang('site.contact form.Location')</p>
                                 <p class="bold">Rani Bari, Lazimpat, Kathmandu</p>
                             </div>
                         </div>
@@ -42,12 +48,12 @@
                                 <img src={{ asset('frontend/svgs/mail.svg') }} />
                             </div>
                             <div class="content">
-                                <p class="title">Email</p>
+                                <p class="title">@lang('site.contact form.Email')</p>
                                 <p class="bold">info@hayabusaconsultancy.com</p>
                             </div>
                         </div>
                     </div>
-                    <p class="grey">Follow us in social media
+                    <p class="grey">{{ optional($contactPage)->{'social_icon_title_'.config('app.locale')} }}
                     </p>
                     <div class="d-flex flex-20 justify__content__mmd">
                         <div class="icon__pink">
@@ -75,45 +81,53 @@
 
             </div>
             <div class="flex-50" data-aos="fade-up">
-                <form action="#">
+                <form action="{{ route('contact.store') }}" method="post">
+                    @csrf
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName">
+                            <label for="full_name" class="form-label">@lang('site.contact form.Full Name')</label>
+                            <input type="text" class="form-control" id="full_name" name="full_name">
+                            @include('backend.shared.form_field_error', ['name' => 'full_name'])
                         </div>
                         <div class="col">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="email" class="form-label">@lang('site.contact form.Email Address')</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                            @include('backend.shared.form_field_error', ['name' => 'email'])
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone">
+                            <label for="phone" class="form-label">@lang('site.contact form.Phone Number')</label>
+                            <input type="text" class="form-control" id="phone" name="phone">
+                            @include('backend.shared.form_field_error', ['name' => 'phone'])
                         </div>
                         <div class="col">
-                            <label for="service" class="form-label">Service</label>
-                            <input type="text" class="form-control" id="service">
+                            <label for="service" class="form-label">@lang('site.contact form.Service')</label>
+                            <input type="text" class="form-control" id="service" name="service">
+                            @include('backend.shared.form_field_error', ['name' => 'service'])
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="day" class="form-label">Set a day</label>
-                            <input type="text" class="form-control" id="day">
+                            <label for="day" class="form-label">@lang('site.contact form.Set a day')</label>
+                            <input type="text" class="form-control" id="day" name="day">
+                            @include('backend.shared.form_field_error', ['name' => 'day'])
                         </div>
                         <div class="col">
-                            <label for="time" class="form-label">Set a time</label>
-                            <input type="text" class="form-control" id="time">
+                            <label for="time" class="form-label">@lang('site.contact form.Set a time')</label>
+                            <input type="text" class="form-control" id="time" name="time">
+                            @include('backend.shared.form_field_error', ['name' => 'time'])
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12">
-                            <label for="details" class="form-label">Additional Details</label>
-                            <textarea class="form-control" id="details" rows="4"></textarea>
+                            <label for="details" class="form-label">@lang('site.contact form.Additional Details')</label>
+                            <textarea class="form-control" id="details" name="details" rows="4"></textarea>
+                            @include('backend.shared.form_field_error', ['name' => 'details'])
                         </div>
                     </div>
+                    <input type="submit" class="button" style="float: right" value="@lang('site.contact form.Send Message')">
                 </form>
-                <button class="button" style="float: right">Send Message</button>
             </div>
         </div>
     </div>

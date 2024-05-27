@@ -73,28 +73,21 @@
             <div class="carousel-inner">
                 <!-- Carousel slides -->
                 <div class="carousel-item active">
-                    <img src="{{ URL::asset('uploads/images/banner/'.$homeBanner->image) }}" class="d-block w-100" alt="Slide" />
+                    <img src="{{ URL::asset('uploads/images/banner/' . $homeBanner->image) }}" class="d-block w-100"
+                        alt="Slide" />
                     <div class="carousel-caption d-none d-md-block">
                         <div class="carousel__flex">
                             <div class="carousel__flex__details">
-                                <h5>{{ $homeBanner->{'title_'.config('app.locale')} }}</h5>
-                                <p>{{ $homeBanner->{'description_'.config('app.locale')} }}</p>
+                                <h5>{{ $homeBanner->{'title_' . config('app.locale')} }}</h5>
+                                <p>{{ $homeBanner->{'description_' . config('app.locale')} }}</p>
                             </div>
                         </div>
                         <div class="carousel__flex">
                             <div class="carousel__flex__form">
-                                <a class="button" href="{{ $homeBanner->button_1->link }}" target="{{ $homeBanner->button_1->target }}">
-                                    {{ $homeBanner->button_1->{'title_'.config('app.locale')} }}
-                                </a>
-                                <a class="button" href="{{ $homeBanner->button_2->link }}" target="{{ $homeBanner->button_2->target }}">
-                                    {{ $homeBanner->button_2->{'title_'.config('app.locale')} }}
-                                </a>
-                                <a class="button" href="{{ $homeBanner->button_3->link }}" target="{{ $homeBanner->button_3->target }}">
-                                    {{ $homeBanner->button_3->{'title_'.config('app.locale')} }}
-                                </a>
-                                <a class="button" href="{{ $homeBanner->button_3->link }}" target="{{ $homeBanner->button_3->target }}">
-                                    {{ $homeBanner->button_4->{'title_'.config('app.locale')} }}
-                                </a>
+                                {!! convertJsonToButton($homeBanner->button_1, 'a') !!}
+                                {!! convertJsonToButton($homeBanner->button_2, 'a') !!}
+                                {!! convertJsonToButton($homeBanner->button_3, 'a') !!}
+                                {!! convertJsonToButton($homeBanner->button_4, 'a') !!}
                             </div>
                         </div>
                     </div>
@@ -113,8 +106,6 @@
             </div>
         @endforeach
     </div>
-
-
     {{-- CTA Section --}}
 
 
@@ -128,14 +119,16 @@
             <div class="sub-title--grey">Introducing Hayabusa Consultancy and Training Center: Your Pathway to Japanese
                 Language Excellence and Study Abroad Adventures in Japan!
             </div>
-            <p class="grey">Hayabusa Consultancy and Training Center, situated in the heart of Nepal, is a premier
+            <p class="grey">
+                Hayabusa Consultancy and Training Center, situated in the heart of Nepal, is a premier
                 education consultancy
                 dedicated to offering top-notch language courses and study abroad programs for students seeking to
                 explore
                 the wonders of Japan. With a strong emphasis on linguistic proficiency and cultural immersion, we strive
                 to
                 equip our students with the necessary skills and knowledge to thrive in a Japanese-speaking
-                environment.</p>
+                environment.
+            </p>
             <button onclick="window.location='{{ route('frontend.about') }}'" class="button">More About Us</button>
         </div>
     </div>
@@ -341,11 +334,10 @@
     {{-- Clients Section --}}
     <div class="clients__section" data-aos="fade-up">
         <div class="clients__section--header">
-            <div class="sub-title">Affiliated College</div>
+            <div class="sub-title">@lang('site.home.college.Affiliated College')</div>
             <div class="heading">
-                <div class="main-title ">We Work With The Best</div>
-                <button onclick="window.location='{{ route('frontend.clients') }}'" class="button">View Our
-                    Clients
+                <div class="main-title ">@lang('site.home.college.We Work With The Best')</div>
+                <button onclick="window.location='{{ route('frontend.clients') }}'" class="button"> @lang('site.home.college.view our colleges')
                 </button>
             </div>
         </div>
@@ -431,11 +423,11 @@
     {{-- Testimonial Section --}}
     <div class="testimonial__section" data-aos="fade-up">
         <div class="testimonial__section--header">
-            <div class="sub-title">What people think about us</div>
+            <div class="sub-title">@lang('site.testimonials.What people think about us')</div>
             <div class="heading">
-                <div class="main-title ">Testimonials</div>
-                <button onclick="window.location='{{ route('frontend.testimonials') }}'" class="button">View More
-                    Testimonials
+                <div class="main-title ">@lang('site.testimonials.testimonial')</div>
+                <button onclick="window.location='{{ route('frontend.testimonials') }}'" class="button">
+                    @lang('site.testimonials.view more testimonial')
                 </button>
             </div>
         </div>
@@ -446,34 +438,29 @@
                     <div class="slide">
                         <div class="testimonial-card">
                             <div class="testimonial-card--container" style="width: 500px">
-                                <img src={{ asset($testimonial['image_link']) }} class="card--image" style="width: 500px"
-                                    @if ($testimonial['youtube'] != null) onclick="playVideo(
-                                             'student-video-{{ $index }}', '{{ $testimonial->youtube }}',
-                                             'student-card--close-{{ $index }}', 'student-card--play-{{ $index }}')" @endif />
-                                <div class="card--name">
-                                    <div class="pills">
-                                        <div class="pills-text"> {{ $testimonial['name_' . config('app.locale')] }}</div>
+                                <a href="{{ URL::to('testimonials') }}">
+                                    <img src={{ asset($testimonial['image_link']) }} class="card--image"
+                                        style="width: 500px" />
+                                    <div class="card--name">
+                                        <div class="pills">
+                                            <div class="pills-text"> {{ $testimonial['name_' . config('app.locale')] }}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                @if ($testimonial['youtube'])
-                                    <div class="card--play" id='student-card--play-{{ $index }}'
-                                        onclick="playVideo(
-                                 'student-video-{{ $index }}', '{{ $testimonial->youtube }}',
-                                 'student-card--close-{{ $index }}', 'student-card--play-{{ $index }}')">
-                                        <img src="{{ asset('frontend/icons/play.png') }}" alt="img" />
-                                    </div>
-                                    <div class="card--close" id='student-card--close-{{ $index }}'
-                                        onclick="closeVideo(
-                             'student-video-{{ $index }}',
-                             'student-card--close-{{ $index }}',
-                             'student-card--play-{{ $index }}')">
-                                        <img src="{{ asset('frontend/icons/close.png') }}" alt="img" />
-                                    </div>
-                                @endif
+                                    @if ($testimonial['youtube'])
+                                        <div class="card--play" id='student-card--play-{{ $index }}'>
+                                            <img src="{{ asset('frontend/icons/play.png') }}" alt="img" />
+                                        </div>
+                                        <div class="card--close" id='student-card--close-{{ $index }}'>
+                                            <img src="{{ asset('frontend/icons/close.png') }}" alt="img" />
+                                        </div>
+                                    @endif
+                                </a>
                             </div>
                             <div class="testimonial-card--title" style="text-align: justify">
                                 {{ $testimonial['tagline_' . config('app.locale')] }}</div>
-                            <div class="testimonial-card--details" style="text-align: justify">{!! Str::limit($testimonial['testimonial_' . config('app.locale')], 100, '...') !!}
+                            <div class="testimonial-card--details" style="text-align: justify">
+                                {!! Str::limit($testimonial['testimonial_' . config('app.locale')], 100, '...') !!}
                             </div>
                         </div>
                     </div>
@@ -545,37 +532,54 @@
                 <p class="grey">If you have any questions regarding recruitment or recruitment, please contact us via
                     message or inquiry.
                 </p>
-                <form action="#">
+                <form action="{{ route('contact.store') }}" method="post">
+                    @csrf
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName">
+                            <label for="full_name" class="form-label">@lang('site.contact form.Full Name')</label>
+                            <input type="text" class="form-control" id="full_name" name="full_name">
+                            @include('backend.shared.form_field_error', ['name' => 'full_name'])
                         </div>
                         <div class="col">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="email" class="form-label">@lang('site.contact form.Email Address')</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                            @include('backend.shared.form_field_error', ['name' => 'email'])
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone">
+                            <label for="phone" class="form-label">@lang('site.contact form.Phone Number')</label>
+                            <input type="text" class="form-control" id="phone" name="phone">
+                            @include('backend.shared.form_field_error', ['name' => 'phone'])
                         </div>
                         <div class="col">
-                            <label for="service" class="form-label">Service</label>
-                            <input type="text" class="form-control" id="service">
+                            <label for="service" class="form-label">@lang('site.contact form.Service')</label>
+                            <input type="text" class="form-control" id="service" name="service">
+                            @include('backend.shared.form_field_error', ['name' => 'service'])
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label for="day" class="form-label">@lang('site.contact form.Set a day')</label>
+                            <input type="text" class="form-control" id="day" name="day">
+                            @include('backend.shared.form_field_error', ['name' => 'day'])
+                        </div>
+                        <div class="col">
+                            <label for="time" class="form-label">@lang('site.contact form.Set a time')</label>
+                            <input type="text" class="form-control" id="time" name="time">
+                            @include('backend.shared.form_field_error', ['name' => 'time'])
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12">
-                            <label for="details" class="form-label">Additional Details</label>
-                            <textarea class="form-control" id="details" rows="4"></textarea>
+                            <label for="details" class="form-label">@lang('site.contact form.Additional Details')</label>
+                            <textarea class="form-control" id="details" name="details" rows="4"></textarea>
+                            @include('backend.shared.form_field_error', ['name' => 'details'])
                         </div>
                     </div>
+                    <input type="submit" class="button" style="float: right" value="@lang('site.contact form.Send Message')">
                 </form>
-                <button class="button" onclick="window.location='{{ route('frontend.contact') }}'"
-                    style="float: right">Send Message
-                </button>
+                
             </div>
         </div>
     </div>

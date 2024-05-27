@@ -3,7 +3,10 @@
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactBannerController;
+use App\Http\Controllers\Backend\ContactPageController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Backend\ContactController as ContactBackendController;
 use App\Http\Controllers\Backend\CTAController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\FaqController;
@@ -55,6 +58,8 @@ Route::middleware(['web', SetLocale::class])->group(function () {
     Route::get('/clients/apply', [FrontPageController::class, 'applyJob'])->name('frontend.clients.apply');
     Route::get('/clients/job', [FrontPageController::class, 'opening'])->name('frontend.clients.job');
     Route::get('/contact', [FrontPageController::class, 'contact'])->name('frontend.contact');
+    
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/success', [FrontPageController::class, 'success'])->name('frontend.success');
     Route::get('/error', [FrontPageController::class, 'error'])->name('frontend.error');
     Route::get('/not-found', [FrontPageController::class, 'notFound'])->name('frontend.404');
@@ -80,6 +85,11 @@ Route::group(['prefix' => 'system'], function () {
 
 
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+        Route::get('/contact/submissions', [ContactBackendController::class, 'index'])->name('contact.index');
+        Route::delete('/contact/submissions/{submission}', [ContactBackendController::class, 'destroy'])->name('contact.destroy');
+
+
 
         // Settings routes
         Route::get('/site-settings', [SettingController::class, 'index'])->name('setting');
@@ -111,6 +121,10 @@ Route::group(['prefix' => 'system'], function () {
 
         // Course CRUD Routes
         Route::resource('courses', CourseController::class)->except(['show']);
+
+        //contact Page 
+        Route::get('contact_page',[ContactPageController::class,'create'])->name('contact_page.index');
+        Route::post('contact_page',[ContactPageController::class,'store'])->name('contact_page.save');
 
         // SubCourse CRUD Routes
         Route::resource('subCourses', SubCourseController::class)->except(['show']);

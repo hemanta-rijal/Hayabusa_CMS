@@ -2390,6 +2390,7 @@ p.details {
 .carousel-caption .carousel__flex__form a.button {
   /* height: 40px; */
   padding: 8px 32px;
+  width: max-content;
 }
 .carousel-caption .carousel__flex__form a:hover{
   color: #eee;

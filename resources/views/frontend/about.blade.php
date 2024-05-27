@@ -40,6 +40,66 @@
             </div>
         </div>
     </div>
+    <style>
+        .section_1_descrtiption .section_2_descrtiption p{
+            text-align: justify
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="justify-content: space-between" data-aos="fade-up">
+                <div class="sub-title"></div>
+                <div class="heading">
+                    <div class="main-title ">Itahari Branch </div>
+                </div>
+                <div class="section_1_descrtiption">
+                    {!! $page->{'itahari_description_' . config('app.locale')} !!}
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6" data-aos="fade-up">
+                <img src={{ asset($page->itahari_image_link) }} style="width:100%;height:auto" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" style="justify-content: space-between">
+            <div class="col-xs-12 col-md-6">
+                <img src={{ $page->nepalgunj_image_link }} data-aos="fade-up" style="width:100%;height:auto" />
+            </div>
+            <div class="col-xs-12 col-md-6 mt-xs-2" data-aos="fade-up">
+                <div class="heading">
+                    <div class="main-title ">Nepalgunj Branch</div>
+                </div>
+                <div class="section_1_descrtiption">
+                    {!! $page->{'nepalgunj_description_' . config('app.locale')} !!}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="justify-content: space-between" data-aos="fade-up">
+                <div class="sub-title"></div>
+                <div class="heading">
+                    <div class="main-title ">{{ $page->{'documentation_title_' . config('app.locale')} }}</div>
+                </div>
+                <div class="section_1_descrtiption">
+                    {!! $page->{'documentation_description_' . config('app.locale')} !!}
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6" data-aos="fade-up">
+                <img src={{ asset($page->documentation_image_link) }} style="width:100%;height:auto" />
+            </div>
+        </div>
+    </div>
+
+
+
 
     <div class="container">
         <div class="sub-title" data-aos="fade-up">{{ $page->{'team_sub_title_' . config('app.locale')} }}</div>
@@ -66,42 +126,23 @@
 
     </div>
 
-    <div class="banner__section banner-noimg" data-aos="fade-up">
+    <div class="banner__section" data-aos="fade-up">
         <div class="banner__section--content">
-            <div class="banner__section--content--left" data-aos="fade-up">
+            <div class="banner__section--content--left">
                 <p>{{ $page->{'director_title_' . config('app.locale')} }}</p>
                 <div class="title">{{ $page->{'director_tagline_' . config('app.locale')} }}</div>
                 <div class="desc">
                     {!! $page->{'director_description_' . config('app.locale')} !!}
                 </div>
                 <p>{{ $page->{'director_name_' . config('app.locale')} }}</p>
+    
             </div>
-            <div class="banner__section--content--up" data-aos="fade-up">
-                <img src="{{ $page->director_image_link }}" alt="image" class="banner-image" />
+            <div class="banner__section--content--right">
+                <img src={{ $page->director_image_link }} class="banner-image" />
             </div>
         </div>
+    
     </div>
-
-    {{--    <div class="bg-grey"> --}}
-    {{--        <div class="container" style="padding: 1px"> --}}
-    {{--            <div class="sub-title" data-aos="fade-up">Certifications</div> --}}
-    {{--            <div class="heading"> --}}
-    {{--                <div class="main-title" data-aos="fade-up">Photos</div> --}}
-    {{--            </div> --}}
-    {{--            <div class="d-flex" data-aos="fade-up"> --}}
-    {{--                @foreach ($cetrificates as $index => $item) --}}
-    {{--                    <div class="grid-4"> --}}
-    {{--                        <div class="certificate__card"> --}}
-    {{--                            <img src={{ asset($item['img']) }} class="certificate__card--img" /> --}}
-    {{--                            <h4 class="certificate__card--title">{{ $item['title'] }}</h4> --}}
-    {{--                            <p class="certificate__card--year">{{ $item['year'] }}</p> --}}
-    {{--                        </div> --}}
-    {{--                    </div> --}}
-    {{--                @endforeach --}}
-    {{--            </div> --}}
-    {{--        </div> --}}
-    {{--    </div> --}}
-
     <div class="container">
         <div class="sub-title" data-aos="fade-up">@lang('site.common.gallery')</div>
         <div class="heading">
@@ -113,7 +154,6 @@
                     <div class="image" style="margin: 0px !important">
                         <a class="fancybox__image" href={{ $image->image_link }}><img src="{{ $image->image_link }}"
                                 alt="image" /></a>
-
                     </div>
                 </div>
             @endforeach

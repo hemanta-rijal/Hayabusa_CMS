@@ -62,14 +62,14 @@ class PageController extends Controller
                 }
 
                 $page->update($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.course')->with('success', 'Events page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $coursePath);
                 CoursePage::create($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.course')->with('success', 'Events page content added successfully.!!');
             }
         } catch (Exception) {
@@ -106,14 +106,14 @@ class PageController extends Controller
                 }
 
                 $page->update($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.blog')->with('success', 'Events page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $blogPath);
                 BlogPage::create($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.blog')->with('success', 'Events page content added successfully.!!');
             }
         } catch (Exception) {
@@ -166,17 +166,17 @@ class PageController extends Controller
                     : $page->detail_image;
 
                 $page->update($validated + [
-                        'image' => $image,
-                        'detail_image' => $detailImage,
-                    ]);
+                    'image' => $image,
+                    'detail_image' => $detailImage,
+                ]);
                 return redirect()->route('page.event')->with('success', 'Events page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $eventPath);
                 $detailImage = $this->saveOriginalImage($request->file('detail_image'), $eventPath);
                 EventPage::create($validated + [
-                        'image' => $image,
-                        'detail_image' => $detailImage,
-                    ]);
+                    'image' => $image,
+                    'detail_image' => $detailImage,
+                ]);
                 return redirect()->route('page.event')->with('success', 'Events page content added successfully.!!');
             }
         } catch (Exception) {
@@ -217,14 +217,14 @@ class PageController extends Controller
                     : $page->image;
 
                 $page->update($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.client')->with('success', 'Clients page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $clientPath);
                 ClientPage::create($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.client')->with('success', 'Clients page content added successfully.!!');
             }
         } catch (Exception) {
@@ -265,14 +265,14 @@ class PageController extends Controller
                     : $page->image;
 
                 $page->update($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.faq')->with('success', 'Faqs page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $faqPath);
                 FaqPage::create($validated + [
-                        'image' => $image,
-                    ]);
+                    'image' => $image,
+                ]);
                 return redirect()->route('page.faq')->with('success', 'Faqs page content added successfully.!!');
             }
         } catch (Exception) {
@@ -308,6 +308,16 @@ class PageController extends Controller
             'image' => $imgValidation,
             'page_image' => $imgValidation,
             'images.*' => 'nullable|max:1024|mimes:jpg,jpeg,png|exclude',
+            'section_1_title_en' => 'required|max:255',
+            'section_1_title_jp' => 'required|max:255',
+            'section_1_description_en' => 'required',
+            'section_1_description_jp' => 'required',
+            'section_1_image' => $imgValidation,
+            'section_2_title_en' => 'required|max:255',
+            'section_2_title_jp' => 'required|max:255',
+            'section_2_description_en' => 'required',
+            'section_2_description_jp' => 'required',
+            'section_2_image' => $imgValidation,
         ];
 
         $validated = $request->validate($rules);
@@ -321,12 +331,21 @@ class PageController extends Controller
                 $pageImage = $request->hasFile('page_image')
                     ? $this->updateImage($page->page_image, $request->file('page_image'), $aboutNepalPath)
                     : $page->page_image;
+                $section_1_image = $request->hasFile('section_1_image')
+                    ? $this->updateImage($page->page_image, $request->file('section_1_image'), $aboutNepalPath)
+                    : $page->section_1_image;
+
+                $section_2_image = $request->hasFile('section_2_image')
+                    ? $this->updateImage($page->page_image, $request->file('section_2_image'), $aboutNepalPath)
+                    : $page->section_1_image;
 
                 $page->update($validated + [
-                        'details' => $request->nepal,
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                    ]);
+                    'details' => $request->nepal,
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                    'section_1_image' => $section_1_image,
+                    'section_2_image' => $section_2_image
+                ]);
 
                 if (isset($request->images)) {
                     foreach ($request->images as $index => $image) {
@@ -341,11 +360,15 @@ class PageController extends Controller
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $aboutNepalPath);
                 $pageImage = $this->saveOriginalImage($request->file('page_image'), $aboutNepalPath);
+                $section_1_image = $this->saveOriginalImage($request->file('section_1_image'), $aboutNepalPath);
+                $section_2_image = $this->saveOriginalImage($request->file('section_2_image'), $aboutNepalPath);
                 $page = AboutNepalPage::create($validated + [
-                        'details' => $request->nepal,
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                    ]);
+                    'details' => $request->nepal,
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                    'section_1_image' => $section_1_image,
+                    'section_2_image' => $section_2_image
+                ]);
                 if (isset($request->images)) {
                     foreach ($request->images as $index => $image) {
                         $filename = $this->saveOriginalImage($image, $aboutNepalPath, 'img-' . $index . '-' . time());
@@ -418,7 +441,18 @@ class PageController extends Controller
             'image' => $imgValidation,
             'page_image' => $imgValidation,
             'director_image' => $imgValidation,
+            'itahari_image' => $imgValidation,
+            'nepalgunj_image' => $imgValidation,
+            'documentation_image' => $imgValidation,
             'images.*' => 'nullable|max:1024|mimes:jpg,jpeg,png|exclude',
+            'itahari_description_en' => 'required',
+            'itahari_description_jp' => 'required',
+            'nepalgunj_description_en' => 'required',
+            'nepalgunj_description_jp' => 'required',
+            'documentation_title_en' => 'required',
+            'documentation_title_jp' => 'required',
+            'documentation_description_en' => 'required',
+            'documentation_description_jp' => 'required',
         ];
 
         $validated = $request->validate($rules);
@@ -436,12 +470,27 @@ class PageController extends Controller
                     ? $this->updateImage($page->director_image, $request->file('director_image'), $aboutPath)
                     : $page->director_image;
 
+                $itahariImage = $request->hasFile('itahari_image')
+                    ? $this->updateImage($page->director_image, $request->file('itahari_image'), $aboutPath)
+                    : $page->itahari_image;
+
+                $nepalgunjImage = $request->hasFile('nepalgunj_image')
+                    ? $this->updateImage($page->director_image, $request->file('nepalgunj_image'), $aboutPath)
+                    : $page->nepalgunj_image;
+
+                $documentationImage = $request->hasFile('documentation_image')
+                    ? $this->updateImage($page->director_image, $request->file('documentation_image'), $aboutPath)
+                    : $page->documentation_image;
+
                 $page->update($validated + [
-                        'details' => $request->detail,
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                        'director_image' => $directorImage,
-                    ]);
+                    'details' => $request->detail,
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                    'director_image' => $directorImage,
+                    'itahari_image'=>$itahariImage,
+                    'nepalgunj_image'=>$nepalgunjImage,
+                    'documentation_image'=>$documentationImage
+                ]);
 
                 if (isset($request->images)) {
                     foreach ($request->images as $index => $image) {
@@ -457,12 +506,18 @@ class PageController extends Controller
                 $image = $this->saveOriginalImage($request->file('image'), $aboutPath);
                 $pageImage = $this->saveOriginalImage($request->file('page_image'), $aboutPath);
                 $directorImage = $this->saveOriginalImage($request->file('director_image'), $aboutPath);
+                $itahariImage = $this->saveOriginalImage($request->file('itahari_image'), $aboutPath);
+                $nepalgunjImage = $this->saveOriginalImage($request->file('nepalgunj_image'), $aboutPath);
+                $documentationImage = $this->saveOriginalImage($request->file('documentation_image'), $aboutPath);
                 $page = AboutPage::create($validated + [
-                        'details' => $request->detail,
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                        'director_image' => $directorImage,
-                    ]);
+                    'details' => $request->detail,
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                    'director_image' => $directorImage,
+                    'itahari_image'=>$itahariImage,
+                    'nepalgunj_image'=>$nepalgunjImage,
+                    'documentation_image'=>$documentationImage
+                ]);
 
                 if (isset($request->images)) {
                     foreach ($request->images as $index => $image) {
@@ -535,19 +590,19 @@ class PageController extends Controller
                     : $page->page_image;
 
                 $page->update($validated + [
-                        'questions' => $request->question,
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                    ]);
+                    'questions' => $request->question,
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                ]);
                 return redirect()->route('page.work-in-japan')->with('success', 'Work in Japan page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $aboutPath);
                 $pageImage = $this->saveOriginalImage($request->file('page_image'), $aboutPath);
                 WorkInJapan::create($validated + [
-                        'questions' => $request->question,
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                    ]);
+                    'questions' => $request->question,
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                ]);
                 return redirect()->route('page.work-in-japan')->with('success', 'Work in Japan page content added successfully.!!');
             }
         } catch (Exception) {
@@ -607,11 +662,11 @@ class PageController extends Controller
                     : $page->page_image;
 
                 $page->update($validated + [
-                        'questions' => $request->question,
-                        'image' => $image,
-                        'second_image' => $secondImage,
-                        'page_image' => $pageImage,
-                    ]);
+                    'questions' => $request->question,
+                    'image' => $image,
+                    'second_image' => $secondImage,
+                    'page_image' => $pageImage,
+                ]);
 
                 if (isset($request->images)) {
                     foreach ($request->images as $index => $image) {
@@ -628,11 +683,11 @@ class PageController extends Controller
                 $pageImage = $this->saveOriginalImage($request->file('page_image'), $imgPath);
                 $secondImage = $this->saveOriginalImage($request->file('second_image'), $imgPath);
                 $page = StudyInJapan::create($validated + [
-                        'questions' => $request->question,
-                        'image' => $image,
-                        'second_image' => $secondImage,
-                        'page_image' => $pageImage,
-                    ]);
+                    'questions' => $request->question,
+                    'image' => $image,
+                    'second_image' => $secondImage,
+                    'page_image' => $pageImage,
+                ]);
 
                 if (isset($request->images)) {
                     foreach ($request->images as $index => $image) {
@@ -712,19 +767,19 @@ class PageController extends Controller
                     : $page->page_image;
 
                 $page->update($validated + [
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                        'services' => $this->updatePropertyValues($request->services, $page->services, $imgPath, 'services-image-'),
-                    ]);
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                    'services' => $this->updatePropertyValues($request->services, $page->services, $imgPath, 'services-image-'),
+                ]);
                 return redirect()->route('page.student-services')->with('success', 'Service for students page content updated successfully.!!');
             } else {
                 $image = $this->saveOriginalImage($request->file('image'), $imgPath);
                 $pageImage = $this->saveOriginalImage($request->file('page_image'), $imgPath);
                 ServiceForStudent::create($validated + [
-                        'image' => $image,
-                        'page_image' => $pageImage,
-                        'services' => $this->setPropertyValues($request->services, $imgPath, 'services-image-'),
-                    ]);
+                    'image' => $image,
+                    'page_image' => $pageImage,
+                    'services' => $this->setPropertyValues($request->services, $imgPath, 'services-image-'),
+                ]);
 
                 return redirect()->route('page.student-services')->with('success', 'Service for students page content added successfully.!!');
             }
@@ -778,16 +833,16 @@ class PageController extends Controller
                     : $page->page_image;
 
                 $page->update($validated + [
-                        'page_image' => $pageImage,
-                        'services' => $this->updatePropertyValues($request->services, $page->services, $imgPath, 'services-image-'),
-                    ]);
+                    'page_image' => $pageImage,
+                    'services' => $this->updatePropertyValues($request->services, $page->services, $imgPath, 'services-image-'),
+                ]);
                 return redirect()->route('page.client-services')->with('success', 'Service for clients page content updated successfully.!!');
             } else {
                 $pageImage = $this->saveOriginalImage($request->file('page_image'), $imgPath);
                 ServiceForClient::create($validated + [
-                        'page_image' => $pageImage,
-                        'services' => $this->setPropertyValues($request->services, $imgPath, 'services-image-'),
-                    ]);
+                    'page_image' => $pageImage,
+                    'services' => $this->setPropertyValues($request->services, $imgPath, 'services-image-'),
+                ]);
 
                 return redirect()->route('page.client-services')->with('success', 'Service for clients page content added successfully.!!');
             }

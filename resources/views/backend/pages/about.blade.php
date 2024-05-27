@@ -298,6 +298,80 @@
                                 @include('backend.shared.form_field_error', ['name' => 'director_description_jp'])
                             </div>
 
+                            <div class="col-md-12">
+                                <label for="itahari_description_en">Itahari Branch Description <span class="text-danger"> *</span></label>
+                                <textarea id="itahari_description_en" class="ckeditor" required="required"
+                                          name="itahari_description_en">{{ old('itahari_description_en', $page->itahari_description_en ?? '') }}</textarea>
+                                @include('backend.shared.form_field_error', ['name' => 'itahari_description_en'])
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="itahari_description_jp">Itahari Branch Description JP <span class="text-danger"> *</span></label>
+                                <textarea id="itahari_description_jp" class="ckeditor" required="required"
+                                          name="itahari_description_jp">{{ old('itahari_description_jp', $page->itahari_description_jp ?? '') }}</textarea>
+                                @include('backend.shared.form_field_error', ['name' => 'itahari_description_jp'])
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="nepalgunj_description_en">Nepalgunj Branch Description EN<span
+                                        class="text-danger"> *</span></label>
+                                <textarea id="nepalgunj_description_en" class="ckeditor" required="required"
+                                          name="nepalgunj_description_en">{{ old('nepalgunj_description_en', $page->nepalgunj_description_en ?? '') }}</textarea>
+                                @include('backend.shared.form_field_error', ['name' => 'nepalgunj_description_en'])
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="nepalgunj_description_jp">Nepalgunj Branch Description JP<span
+                                        class="text-danger"> *</span></label>
+                                <textarea id="nepalgunj_description_jp" class="ckeditor" required="required"
+                                          name="nepalgunj_description_jp">{{ old('nepalgunj_description_jp', $page->nepalgunj_description_jp ?? '') }}</textarea>
+                                @include('backend.shared.form_field_error', ['name' => 'nepalgunj_description_jp'])
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                <h4>How Hayabusa does documentation</h4>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label" for="documentation_title_en">
+                                    Title<span class="text-danger"> *</span>
+                                </label>
+                                <input type="text" class="form-control" name="documentation_title_en"
+                                       id="documentation_title_en" required
+                                       value="{{ old('documentation_title_en', $page->documentation_title_en ?? '') }}">
+                                @include('backend.shared.form_field_error', ['name' => 'documentation_title_en'])
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="documentation_title_jp">
+                                    Title JP<span class="text-danger"> *</span>
+                                </label>
+                                <input type="text" class="form-control" name="documentation_title_jp"
+                                       id="documentation_title_jp" required
+                                       value="{{ old('documentation_title_jp', $page->documentation_title_jp ?? '') }}">
+                                @include('backend.shared.form_field_error', ['name' => 'documentation_title_jp'])
+                            </div>
+                            <div class="col-md-12">
+                                <label for="documentation_description_en">Description<span
+                                        class="text-danger"> *</span></label>
+                                <textarea id="documentation_description_en" class="ckeditor" required="required"
+                                          name="documentation_description_en">{{ old('documentation_description_en', $page->documentation_description_en ?? '') }}</textarea>
+                                @include('backend.shared.form_field_error', ['name' => 'documentation_description_en'])
+                            </div>
+                            <div class="col-md-12">
+                                <label for="documentation_description_jp">Description JP<span
+                                        class="text-danger"> *</span></label>
+                                <textarea id="documentation_description_jp" class="ckeditor" required="required"
+                                          name="documentation_description_jp">{{ old('documentation_description_jp', $page->documentation_description_jp ?? '') }}</textarea>
+                                @include('backend.shared.form_field_error', ['name' => 'documentation_description_jp'])
+                            </div>
+
+                            
+                        </div>
+                        <div class="row">
+
                             <div class="col-md-3">
                                 <label class="form-label" for="page_image">
                                     Page Image<span class="text-danger"> *</span>
@@ -339,6 +413,48 @@
                                            data-allowed-file-extensions='["png", "jpg", "jpeg"]'>
                                 </div>
                                 @include('backend.shared.form_field_error', ['name' => 'director_image'])
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="itahari_image">
+                                    Itahari Branch Image<span class="text-danger"> *</span>
+                                </label>
+                                <div id="itahari_image" class="multiple-file-upload">
+                                    <input name="itahari_image" type="file"
+                                           {{ $page->id ? '' : 'required' }}
+                                           accept="image/png,image/jpeg,image/jpg"
+                                           data-browse-on-zone-click="true"
+                                           class="itahari_image" data-show-remove="true"
+                                           data-allowed-file-extensions='["png", "jpg", "jpeg"]'>
+                                </div>
+                                @include('backend.shared.form_field_error', ['name' => 'itahari_image'])
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="nepalgunj_image">
+                                    Nepalgunj Branch Image<span class="text-danger"> *</span>
+                                </label>
+                                <div id="nepalgunj_image" class="multiple-file-upload">
+                                    <input name="nepalgunj_image" type="file"
+                                           {{ $page->id ? '' : 'required' }}
+                                           accept="image/png,image/jpeg,image/jpg"
+                                           data-browse-on-zone-click="true"
+                                           class="nepalgunj_image" data-show-remove="true"
+                                           data-allowed-file-extensions='["png", "jpg", "jpeg"]'>
+                                </div>
+                                @include('backend.shared.form_field_error', ['name' => 'nepalgunj_image'])
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="documentation_image">
+                                    Documentation Image<span class="text-danger"> *</span>
+                                </label>
+                                <div id="documentation_image" class="multiple-file-upload">
+                                    <input name="documentation_image" type="file"
+                                           {{ $page->id ? '' : 'required' }}
+                                           accept="image/png,image/jpeg,image/jpg"
+                                           data-browse-on-zone-click="true"
+                                           class="documentation_image" data-show-remove="true"
+                                           data-allowed-file-extensions='["png", "jpg", "jpeg"]'>
+                                </div>
+                                @include('backend.shared.form_field_error', ['name' => 'documentation_image'])
                             </div>
 
                             <div class="col-md-12">
@@ -384,6 +500,9 @@
             singleImageEdit(".image", "{!! $page->image_link !!}", 3000);
             singleImageEdit(".page_image", "{!! $page->page_image_link !!}", 3000);
             singleImageEdit(".director_image", "{!! $page->director_image_link !!}", 3000);
+            singleImageEdit(".itahari_image", "{!! $page->itahari_image_link !!}", 3000);
+            singleImageEdit(".nepalgunj_image", "{!! $page->nepalgunj_image_link !!}", 3000);
+            singleImageEdit(".documentation_image", "{!! $page->documentation_image_link !!}", 3000);
             multipleImageEdit(".gallery-input-preview", {!! $page->images !!}, 1024, 9, '/about/remove_image');
             @else
             singleImageCreate(".page_image", 1024)

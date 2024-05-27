@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="container" data-aos="fade-up">
+        <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
         <p class="details" style="text-align: justify">
             {!! $blog->{'description_' . config('app.locale')} !!}
         </p>

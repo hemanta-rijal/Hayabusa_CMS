@@ -41,6 +41,46 @@
             </div>
         </div>
     </div>
+    <style>
+        .section_1_descrtiption .section_2_descrtiption p{
+            text-align: justify
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="justify-content: space-between" data-aos="fade-up">
+                <div class="sub-title"></div>
+                <div class="heading">
+                    <div class="main-title ">{{ $page->{'section_1_title_' . config('app.locale')} }}</div>
+                </div>
+                <div class="section_1_descrtiption">
+                    {!! $page->{'section_1_description_' . config('app.locale')} !!}
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6" data-aos="fade-up">
+                <img src={{ asset($page->section_one_image) }} style="width:100%;height:auto" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" style="justify-content: space-between">
+            <div class="col-xs-12 col-md-6">
+                <img src={{ $page->section_two_image }} data-aos="fade-up" style="width:100%;height:auto" />
+            </div>
+            <div class="col-xs-12 col-md-6 mt-xs-2" data-aos="fade-up">
+                <div class="heading">
+                    <div class="main-title ">{{ $page->{'section_2_title_' . config('app.locale')} }}</div>
+                </div>
+                <div class="section_1_descrtiption">
+                    {!! $page->{'section_2_description_' . config('app.locale')} !!}
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="sub-title" data-aos="fade-up">@lang('site.common.gallery')</div>

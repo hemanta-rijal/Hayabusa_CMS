@@ -209,7 +209,8 @@ class PageController extends Controller
 
     public function contact(): Factory|View|Application
     {
-        return view('frontend.contact');
+        $contactPage = Meta::where('key','contactPage.title')->get(['value_en']);
+        return view('frontend.contact',compact('contactPage'));
     }
 
     public function success(): Factory|View|Application

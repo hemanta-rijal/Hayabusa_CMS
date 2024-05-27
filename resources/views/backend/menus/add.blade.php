@@ -138,7 +138,7 @@
                         <div class="list-group-item" data-id="3">Item 3
                             <div class="nested-list"></div>
                         </div>
-                        <div class="list-group-item nested-list" data-id="4">
+                        <div class="list-group-item" data-id="4">
                             Item 4
                             <div class="nested-list">
                                 <div class="list-group-item" data-id="5">Subitem 1</div>
@@ -247,18 +247,15 @@
                     var item = evt.item;
                     var itemId = item.getAttribute('data-id');
                     var parentItem = findClosestParentItem(item);
+                    console.log(parentItem);
                     var closestListGroup = findClosestListGroup(item);
 
                     if (parentItem && parentItem !== item) {
                         // If the item has a parent and it's not being dropped onto itself
                         var nestedList = parentItem.querySelector('.nested-list');
                         if (nestedList) {
-                            nestedList.remove(); // Remove the nested list element
-                            // Clone the item before appending to the new parent
-                            var newItem = item.cloneNode(true);
-                            parentItem.appendChild(newItem);
-                            console.log('Moved item ' + itemId + ' inside parent ' + parentItem
-                                .getAttribute('data-id'));
+                            nestedList.appendChild(item); // Append the item to the new parent
+                            console.log('Moved item ' + itemId + ' inside parent ' + parentItem.getAttribute('data-id'));
                         }
                     } else if (closestListGroup && !closestListGroup.contains(item)) {
                         // If the item is being dropped into the main list and not being dropped onto itself
@@ -268,16 +265,35 @@
                 }
             });
 
-            // Extend draggable functionality to subitems
-            var nestedItems = document.querySelectorAll('.nested-list .list-group-item');
-            nestedItems.forEach(function(nestedItem) {
-                sortable.option('draggable', '.list-group-item, .nested-list .list-group-item');
+            // Initialize sortable for nested lists
+            var nestedLists = document.querySelectorAll('.nested-list');
+            nestedLists.forEach(function(nestedList) {
+                new Sortable(nestedList, {
+                    group: 'nested',
+                    animation: 150,
+                    draggable: '.list-group-item',
+                    onEnd: function(evt) {
+                        var item = evt.item;
+                        var itemId = item.getAttribute('data-id');
+                        var parentItem = findClosestParentItem(item);
+                        var closestListGroup = findClosestListGroup(item);
+
+                        if (parentItem && parentItem !== item) {
+                            // If the item has a parent and it's not being dropped onto itself
+                            var nestedList = parentItem.querySelector('.nested-list');
+                            if (nestedList) {
+                                nestedList.appendChild(item); // Append the item to the new parent
+                                console.log('Moved item ' + itemId + ' inside parent ' + parentItem.getAttribute('data-id'));
+                            }
+                        } else if (closestListGroup && !closestListGroup.contains(item)) {
+                            // If the item is being dropped into the main list and not being dropped onto itself
+                            closestListGroup.appendChild(item);
+                            console.log('Moved item ' + itemId + ' to main list');
+                        }
+                    }
+                });
             });
         });
-
-        function getParentId(item) {
-            return item.parentNode ? item.parentNode.getAttribute('data-id') : null;
-        }
 
         function findClosestParentItem(item) {
             var parentItem = item.parentElement;

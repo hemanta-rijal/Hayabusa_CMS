@@ -62,6 +62,9 @@ return [
         "testimonial" => "Testimonials",
         "student" => "Student Testimonials",
         "client" => "Client Testimonials",
+        "What people think about us" => "What people think about us",
+        'view more testimonial' => 'view more testimonial',
+
     ],
     "home" => [
         "event_sub_title" => "Events by Hayabusa",
@@ -83,5 +86,23 @@ return [
         "services" => "Our Services",
         "service_student" => "For Students",
         "service_client" => "For Clients",
+        "college" => [
+            "Affiliated College" => 'Affiliated College',
+            "We Work With The Best" => 'We Work With The Best',
+            "view our colleges" => 'view our colleges'
+        ]
+    ],
+    "contact form" => [
+        "Full Name" => "Full Name",
+        "Email Address" => "Email Address",
+        "Phone Number" => "Phone Number",
+        "Service" => "Service",
+        "Set a day" => "Set a day",
+        "Set a time" => "Set a time",
+        "Additional Details" => "Additional Details",
+        "Send Message" => "Send Message",
+        "Phone" => "Phone",
+        "Location" => "Location",
+        "Email" => "Email"
     ]
 ];

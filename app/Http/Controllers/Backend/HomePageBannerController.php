@@ -41,36 +41,36 @@ class HomePageBannerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    try {
-        DB::beginTransaction();
-        
-        $imageFile = '';
-        $data = $request->except('_token');
-        $meta = Meta::firstOrNew(['key' => 'homeBanner.title']);
-        if ($request->hasFile('image')) {
-            $imageFile = $this->saveOriginalImage($request->image);
-        } else {
-            if ($meta->exists) {
-                $value_en = json_decode($meta->value_en);
-                $imageFile = $value_en->image ?? '';
+    {
+        try {
+            DB::beginTransaction();
+
+            $imageFile = '';
+            $data = $request->except('_token');
+            $meta = Meta::firstOrNew(['key' => 'homeBanner.title']);
+            if ($request->hasFile('image')) {
+                $imageFile = $this->saveOriginalImage($request->image);
+            } else {
+                if ($meta->exists) {
+                    $value_en = json_decode($meta->value_en);
+                    $imageFile = $value_en->image ?? '';
+                }
             }
+            $data['image'] = $imageFile;
+            $value_en = json_encode($data);
+            $meta->fill([
+                'title_en' => 'Home Page Title',
+                'title_jp' => 'Home Page Title (JP)',
+                'value_en' => $value_en,
+                'type' => 'json'
+            ])->save();
+            DB::commit();
+            return redirect()->route('home-banner')->with('success', 'Home Banner Update Successfully!!!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Failed to update Home Banner. Please try again.');
         }
-        $data['image'] = $imageFile;
-        $value_en = json_encode($data);
-        $meta->fill([
-            'title_en' => 'Home Page Title',
-            'title_jp' => 'Home Page Title (JP)',
-            'value_en' => $value_en,
-            'type' => 'json'
-        ])->save();
-        DB::commit();
-        return redirect()->route('home-banner')->with('success', 'Home Banner Update Successfully!!!');
-    } catch (Exception $e) {
-        DB::rollBack();
-        return redirect()->back()->with('error', 'Failed to update Home Banner. Please try again.');
     }
-}
 
     /**
      * Display the specified resource.

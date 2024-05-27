@@ -44,3 +44,25 @@
         </div>
     </div>
 @endsection
+
+
+@push('custom-js')
+<script>
+    $(document).ready(function () {
+        $('.nav-link').on('click', function () {
+            // Remove 'active' class from all tabs
+            $('.nav-link').removeClass('active');
+
+            // Add 'active' class to the clicked tab
+            $(this).addClass('active');
+
+            // Hide all tab content
+            $('.tab-pane').removeClass('show active');
+
+            // Show the corresponding tab content
+            $($(this).data('target')).addClass('show active');
+        });
+    });
+</script>
+
+@endpush

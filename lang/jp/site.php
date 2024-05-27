@@ -61,6 +61,8 @@ return [
         "testimonial" => "お客様の声",
         "student" => "学生の声",
         "client" => "お客様の声",
+        'What people think about us' => '人々が私たちについてどう思っているか',
+        'view more testimonial' => 'もっと紹介文を見る'
     ],
     "home" => [
         "event_sub_title" => "Events お客様の声",
@@ -82,5 +84,24 @@ return [
         "services" => "Our 声お客様の声",
         "service_student" => "For 声お客様の声",
         "service_client" => "For 声お客様の声",
+        "college" => [
+            "Affiliated College" => '附属大学',
+            "We Work With The Best" => '私たちは最高の人材と協力します',
+            "view our colleges" => '私たちの大学を見る'
+        ]
+    ],
+    "contact form"=>[
+        "Full Name" => "フルネーム",
+        "Email Address" => "メールアドレス",
+        "Phone Number" => "電話番号",
+        "Service" => "サービス",
+        "Set a day" => "日付を設定",
+        "Set a time" => "時間を設定",
+        "Additional Details" => "追加の詳細",
+        "Send Message"=>"メッセージを送る",
+        "Phone"=>"電話",
+        "Location"=>"位置",
+        "Email"=>"Eメール"
     ]
+
 ];

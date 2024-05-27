@@ -93,7 +93,14 @@ class AboutPage extends Model
         'details' => 'array'
     ];
 
-    protected $appends = ['image_link', 'page_image_link', 'director_image_link'];
+    protected $appends = [
+        'image_link',
+        'page_image_link',
+        'director_image_link',
+        'documentation_image_link',
+        'itahari_image_link',
+        'nepalgunj_image_link'
+    ];
 
     public function getImageLinkAttribute(): ?string
     {
@@ -103,6 +110,21 @@ class AboutPage extends Model
     public function getPageImageLinkAttribute(): ?string
     {
         return isset($this->page_image) ? asset('uploads/images/pages/about/' . $this->page_image) : null;
+    }
+
+    public function getItahariImageLinkAttribute(): ?string
+    {
+        return isset($this->itahari_image) ? asset('uploads/images/pages/about/' . $this->itahari_image) : null;
+    }
+
+    public function getNepalgunjImageLinkAttribute(): ?string
+    {
+        return isset($this->nepalgunj_image) ? asset('uploads/images/pages/about/' . $this->nepalgunj_image) : null;
+    }
+
+    public function getDocumentationImageLinkAttribute(): ?string
+    {
+        return isset($this->documentation_image) ? asset('uploads/images/pages/about/' . $this->documentation_image) : null;
     }
 
     public function getDirectorImageLinkAttribute(): ?string
