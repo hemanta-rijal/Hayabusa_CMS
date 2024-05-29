@@ -18,6 +18,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-4">
+
             @foreach ($menuOptions as $key => $menuOption)
                 <div class="card {{ $menus->isEmpty() || $menu_id == null ? 'disabled' : '' }}">
                     <div class="card-header">
@@ -38,8 +39,8 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="{{ 'select-' . $key }}[]"
                                             id="flexCheckDefault{{ $loop->index + 1 }}" value="{{ $option['slug'] }}"
-                                            data-title-en={{ $option['title_en'] }}
-                                            data-title-jp={{ $option['title_jp'] }}>
+                                            data-title-en="{{ $option['title_en'] }}"
+                                            data-title-jp="{{ $option['title_jp'] }}">
                                         <label class="form-check-label" for="flexCheckDefault{{ $loop->index + 1 }}">
                                             {{ $option['title_en'] }}
                                         </label>
@@ -147,6 +148,7 @@
                         </div>
                     </div>
                 </div>
+                <a href="#" onclick="sendSortable()">Send</a>
             @endif
         </div>
     </div>
@@ -204,7 +206,7 @@
         }
 
         function sendMenuDataToServer(optionKey) {
-            var data = gatherMenuData(optionKey);
+            var checkedData = gatherMenuData(optionKey);
             var menu_id = '<?php echo $menu_id; ?>'; // Get the menu ID from the query string
 
             // Get the CSRF token value from the meta tag in your HTML document
@@ -218,7 +220,7 @@
                     },
                     body: JSON.stringify({
                         menu_id: menu_id,
-                        menu_items: data
+                        menu_items: checkedData
                     }), // Send menu_id and menu_items data
                 })
                 .then(response => {
@@ -229,7 +231,22 @@
                 })
                 .then(data => {
                     console.log('Server response:', data);
-                    window.location.reload();
+                    const sortableList = document.querySelector('#sortable-list');
+                    console.log(checkedData)
+                    // Append checkedData to sortableList
+                    checkedData.forEach((item, index) => {
+                        if (item) { // Ensure the item is not null
+                            const listItem = document.createElement('div');
+                            listItem.className = 'list-group-item';
+                            listItem.setAttribute('data-id', data.id);
+                            // Assuming index + 1 is used for data-id
+                            listItem.innerHTML = `${item.title_en} <div class="nested-list"></div>`;
+                            sortableList.appendChild(listItem);
+                        }
+                    });
+
+
+                    // window.location.reload();
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
@@ -239,61 +256,46 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var sortable = new Sortable(document.getElementById('sortable-list'), {
+            new Sortable(document.getElementById('sortable-list'), {
                 group: 'nested',
                 animation: 150,
                 draggable: '.list-group-item',
                 onEnd: function(evt) {
-                    var item = evt.item;
-                    var itemId = item.getAttribute('data-id');
-                    var parentItem = findClosestParentItem(item);
-                    console.log(parentItem);
-                    var closestListGroup = findClosestListGroup(item);
-
-                    if (parentItem && parentItem !== item) {
-                        // If the item has a parent and it's not being dropped onto itself
-                        var nestedList = parentItem.querySelector('.nested-list');
-                        if (nestedList) {
-                            nestedList.appendChild(item); // Append the item to the new parent
-                            console.log('Moved item ' + itemId + ' inside parent ' + parentItem.getAttribute('data-id'));
-                        }
-                    } else if (closestListGroup && !closestListGroup.contains(item)) {
-                        // If the item is being dropped into the main list and not being dropped onto itself
-                        closestListGroup.appendChild(item);
-                        console.log('Moved item ' + itemId + ' to main list');
-                    }
+                    handleSortEnd(evt);
                 }
             });
 
-            // Initialize sortable for nested lists
-            var nestedLists = document.querySelectorAll('.nested-list');
-            nestedLists.forEach(function(nestedList) {
+            document.querySelectorAll('.nested-list').forEach(function(nestedList) {
                 new Sortable(nestedList, {
                     group: 'nested',
                     animation: 150,
                     draggable: '.list-group-item',
                     onEnd: function(evt) {
-                        var item = evt.item;
-                        var itemId = item.getAttribute('data-id');
-                        var parentItem = findClosestParentItem(item);
-                        var closestListGroup = findClosestListGroup(item);
-
-                        if (parentItem && parentItem !== item) {
-                            // If the item has a parent and it's not being dropped onto itself
-                            var nestedList = parentItem.querySelector('.nested-list');
-                            if (nestedList) {
-                                nestedList.appendChild(item); // Append the item to the new parent
-                                console.log('Moved item ' + itemId + ' inside parent ' + parentItem.getAttribute('data-id'));
-                            }
-                        } else if (closestListGroup && !closestListGroup.contains(item)) {
-                            // If the item is being dropped into the main list and not being dropped onto itself
-                            closestListGroup.appendChild(item);
-                            console.log('Moved item ' + itemId + ' to main list');
-                        }
+                        handleSortEnd(evt);
                     }
                 });
             });
         });
+
+        function handleSortEnd(evt) {
+            var item = evt.item;
+            var itemId = item.getAttribute('data-id');
+            var parentItem = findClosestParentItem(item);
+
+            if (parentItem && parentItem !== item) {
+                var nestedList = parentItem.querySelector('.nested-list');
+                if (nestedList && !containsItem(item, nestedList)) {
+                    nestedList.appendChild(item);
+                    console.log('Moved item ' + itemId + ' inside parent ' + parentItem.getAttribute('data-id'));
+                }
+            } else {
+                var mainList = document.getElementById('sortable-list');
+                if (!containsItem(mainList, item)) {
+                    mainList.appendChild(item);
+                    console.log('Moved item ' + itemId + ' to main list');
+                }
+            }
+        }
 
         function findClosestParentItem(item) {
             var parentItem = item.parentElement;
@@ -303,16 +305,20 @@
                 }
                 parentItem = parentItem.parentElement;
             }
-            return null; // Return null if no parent with data-id attribute is found
+            return null;
         }
 
-        function findClosestListGroup(item) {
-            var closestParent = item.closest('.list-group-item');
-            if (closestParent) {
-                return closestParent.querySelector('.nested-list');
-            } else {
-                return document.getElementById('sortable-list');
+        function containsItem(container, item) {
+            if (container === item) return true;
+            for (let child of container.children) {
+                if (containsItem(child, item)) return true;
             }
+            return false;
+        }
+
+        function sendSortable() {
+            var sortable_list = document.getElementById("sortable-list")
+            console.log(sortable_list)
         }
     </script>
 @endpush

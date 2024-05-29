@@ -172,7 +172,7 @@ class MenuController extends Controller
             // Loop through the received menu items data and store each one
             foreach ($menuItemsData['menu_items'] as $menuItemData) {
                 if ($menuItemData !== null) {
-                    MenuItem::create([
+                    $menuItem = MenuItem::create([
                         'title_en' => $menuItemData['title_en'],
                         'title_jp' => $menuItemData['title_jp'],
                         'slug' => $menuItemData['slug'],
@@ -182,7 +182,7 @@ class MenuController extends Controller
                     ]);
                 }
             }
-            return response()->json(['message' => 'Menu items stored successfully'], Response::HTTP_CREATED);
+            return response()->json(['message' => 'Menu items stored successfully','id'=>$menuItem->id], Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to store menu items', 'message' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
